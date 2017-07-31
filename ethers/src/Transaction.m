@@ -33,7 +33,7 @@
 #import "SecureData.h"
 #import "Utilities.h"
 
-static NSErrorDomain ErrorDomain = @"io.ethers.TransactionError";
+static NSErrorDomain ErrorDomain = @"us.proviv.TransactionError";
 
 static NSData *stripDataZeros(NSData *data) {
     const char *bytes = data.bytes;

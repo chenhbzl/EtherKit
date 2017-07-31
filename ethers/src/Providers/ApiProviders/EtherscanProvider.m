@@ -133,7 +133,7 @@ NSString* queryifyTransaction(Transaction *transaction) {
 #pragma mark - Calling
 
 - (NSURL*)urlForPath: (NSString*)path {
-    NSString *host = (self.testnet ? @"testnet.etherscan.io": @"api.etherscan.io");
+    NSString *host = (self.testnet ? @"rinkeby.etherscan.io": @"api.etherscan.io");
     NSString *apiKey = (_apiKey ? [NSString stringWithFormat:@"&apikey=%@", _apiKey]: @"");
     return [NSURL URLWithString:[NSString stringWithFormat:@"https://%@%@%@", host, path, apiKey]];
 }

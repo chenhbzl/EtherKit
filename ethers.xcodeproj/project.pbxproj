@@ -590,12 +590,12 @@
 				TargetAttributes = {
 					E2317E621E3191AC00DBE3E4 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 7GS2C8FTGM;
+						DevelopmentTeam = 62EN37SSUJ;
 						ProvisioningStyle = Automatic;
 					};
 					E2317E6B1E3191AC00DBE3E4 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 7GS2C8FTGM;
+						DevelopmentTeam = 62EN37SSUJ;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -817,7 +817,7 @@
 				CODE_SIGN_IDENTITY = "";
 				DEAD_CODE_STRIPPING = YES;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 7GS2C8FTGM;
+				DEVELOPMENT_TEAM = 62EN37SSUJ;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -839,7 +839,7 @@
 				CODE_SIGN_IDENTITY = "";
 				DEAD_CODE_STRIPPING = YES;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 7GS2C8FTGM;
+				DEVELOPMENT_TEAM = 62EN37SSUJ;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -858,7 +858,7 @@
 		E2317E7B1E3191AC00DBE3E4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				DEVELOPMENT_TEAM = 7GS2C8FTGM;
+				DEVELOPMENT_TEAM = 62EN37SSUJ;
 				INFOPLIST_FILE = ethersTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.ethers.ethersTests;
@@ -869,7 +869,7 @@
 		E2317E7C1E3191AC00DBE3E4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				DEVELOPMENT_TEAM = 7GS2C8FTGM;
+				DEVELOPMENT_TEAM = 62EN37SSUJ;
 				INFOPLIST_FILE = ethersTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.ethers.ethersTests;

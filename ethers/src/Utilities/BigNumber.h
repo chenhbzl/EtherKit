@@ -59,6 +59,8 @@
 - (BigNumber*)mod: (BigNumber*)other;
 //- (BigNumber*)pow: (BigNumber*)other;
 
+- (BigNumber*)complement;
+
 - (NSUInteger)hash;
 - (NSComparisonResult)compare: (id)other;
 - (BOOL)isEqual:(id)object;

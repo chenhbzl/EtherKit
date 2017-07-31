@@ -307,6 +307,8 @@ NSMutableDictionary *transactionObject(Transaction *transaction) {
     if (![transaction.value isZero]) { [info setObject:[transaction.value hexString] forKey:@"value"]; }
     if (transaction.data.length) { [info setObject:[SecureData dataToHexString:transaction.data] forKey:@"data"]; }
     
+    NSLog(@"transactionObject %@ ",info);
+    
     return info;
 }
 

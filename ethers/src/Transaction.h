@@ -49,6 +49,7 @@ typedef NS_OPTIONS(unsigned char, ChainId)  {
     ChainIdHomestead    = 0x01,
     ChainIdMorden       = 0x02,
     ChainIdRopsten      = 0x03,
+    ChainIdRinkeby      = 0x04,
 };
 
 //typedef unsigned long long Nonce;

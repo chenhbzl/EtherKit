@@ -200,6 +200,20 @@ static RegEx *RegexHex = nil;
     return result;
 }
 
+- (BigNumber*)complement {
+    BigNumber *result = [[BigNumber alloc] init];
+    NSLog(@"Number of bits %d",mp_count_bits(&(_bigNumber)));
+    BigNumber *allones = [BigNumber bigNumberWithHexString:@"0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"];
+    
+    /* ---> binary operations <---
+     c = a XOR b
+    int mp_xor(mp_int *a, mp_int *b, mp_int *c);*/
+    
+ 
+    mp_xor(&_bigNumber, [allones _bigNumber], [result _bigNumber]);
+    return result;
+}
+
 
 #pragma mark - Query API
 

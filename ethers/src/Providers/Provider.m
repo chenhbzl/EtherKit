@@ -108,7 +108,7 @@ static NSString *UserAgent = nil;
         NSDictionary *info = [[NSBundle mainBundle] infoDictionary];
         NSString *version = [info objectForKey:@"CFBundleShortVersionString"];
         NSString *platform = [UIDevice currentDevice].systemVersion;
-        UserAgent = [NSString stringWithFormat:@"io.ethers.app/%@ (iOS/%@)", version, platform];
+        UserAgent = [NSString stringWithFormat:@"us.proviv.claim/%@ (iOS/%@)", version, platform];
     });
 }
 
@@ -155,7 +155,7 @@ static NSString *UserAgent = nil;
 - (void)setEtherPrice: (float)etherPrice {
     if (etherPrice == _etherPrice) { return; }
     
-    NSLog(@"Ether Price: $%.02f/ether", etherPrice);
+    //NSLog(@"Ether Price: $%.02f/ether", etherPrice);
 
     _etherPrice = etherPrice;
 

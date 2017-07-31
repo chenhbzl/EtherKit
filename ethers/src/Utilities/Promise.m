@@ -52,7 +52,7 @@ NSErrorDomain PromiseErrorDomain = @"PromiseErrorDomain";
     return self;
 }
 
-- (void)executeCompleteion {
+- (void)executeCompletion {
 
     // This must be called from a synchronized block
     for (void (^callback)(Promise*) in _completionCallbacks) {
@@ -73,7 +73,7 @@ NSErrorDomain PromiseErrorDomain = @"PromiseErrorDomain";
         if (_complete) { return; }
         _complete = YES;
         _result = result;
-        [self executeCompleteion];
+        [self executeCompletion];
     }
 }
 
@@ -86,7 +86,7 @@ NSErrorDomain PromiseErrorDomain = @"PromiseErrorDomain";
         if (_complete) { return; }
         _complete = YES;
         _error = error;
-        [self executeCompleteion];
+        [self executeCompletion];
     }
 }
 

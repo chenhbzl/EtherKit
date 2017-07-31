@@ -139,6 +139,7 @@
                   fetchType:ApiProviderFetchTypeBigNumberHexString];
 }
 
+
 - (IntegerPromise*)getTransactionCount:(Address *)address blockTag:(BlockTag)blockTag {
     NSObject *tag = getBlockTag(blockTag);
 

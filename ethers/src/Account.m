@@ -37,7 +37,7 @@
 #import "BigNumber.h"
 #import "SecureData.h"
 
-static NSErrorDomain ErrorDomain = @"io.ethers.AccountError";
+static NSErrorDomain ErrorDomain = @"us.proviv.AccountError";
 
 NSObject *getPath(NSObject *object, NSString *path, Class expectedClass) {
     
@@ -378,11 +378,11 @@ static NSDateFormatter *TimeFormatter = nil;
         }
         
         // Check for an mnemonic phrase
-        NSDictionary *ethersData = [data objectForKey:@"x-ethers"];
-        if ([ethersData isKindOfClass:[NSDictionary class]] && [[ethersData objectForKey:@"version"] isEqual:@"0.1"]) {
+        NSDictionary *claimData = [data objectForKey:@"x-claim"];
+        if ([claimData isKindOfClass:[NSDictionary class]] && [[claimData objectForKey:@"version"] isEqual:@"0.1"]) {
             
-            NSData *mnemonicCounter = ensureDataLength([ethersData objectForKey:@"mnemonicCounter"], 16);
-            NSData *mnemonicCiphertext = ensureDataLength([ethersData objectForKey:@"mnemonicCiphertext"], 16);
+            NSData *mnemonicCounter = ensureDataLength([claimData objectForKey:@"mnemonicCounter"], 16);
+            NSData *mnemonicCiphertext = ensureDataLength([claimData objectForKey:@"mnemonicCiphertext"], 16);
             if (mnemonicCounter && mnemonicCiphertext) {
 
                 SecureData *mnemonicData = [SecureData secureDataWithLength:[mnemonicCiphertext length]];
@@ -464,8 +464,8 @@ static NSDateFormatter *TimeFormatter = nil;
     [json setObject:[uuid UUIDString] forKey:@"id"];
     [json setObject:@(3) forKey:@"version"];
     
-    NSMutableDictionary *ethers = [NSMutableDictionary dictionary];
-    [json setObject:ethers forKey:@"x-ethers"];
+    NSMutableDictionary *claim = [NSMutableDictionary dictionary];
+    [json setObject:claim forKey:@"x-claim"];
     
     NSMutableDictionary *crypto = [NSMutableDictionary dictionary];
     [json setObject:crypto forKey:@"Crypto"];
@@ -486,15 +486,15 @@ static NSDateFormatter *TimeFormatter = nil;
                forKey:@"cipherparams"];
     [crypto setObject:@"aes-128-ctr" forKey:@"cipher"];
     
-    // Set ethers parameters
+    // Set claim parameters
     NSDate *now = [NSDate date];
     NSString *gethFilename = [NSString stringWithFormat:@"UTC--%@T%@.0Z--%@",
                               [DateFormatter stringFromDate:now],
                               [TimeFormatter stringFromDate:now],
                               [[self.address.checksumAddress substringFromIndex:2] lowercaseString]];
-    [ethers setObject:gethFilename forKey:@"gethFilename"];
-    [ethers setObject:@"ethers/iOS" forKey:@"client"];
-    [ethers setObject:@"0.1" forKey:@"version"];
+    [claim setObject:gethFilename forKey:@"gethFilename"];
+    [claim setObject:@"claim/iOS" forKey:@"client"];
+    [claim setObject:@"0.1" forKey:@"version"];
 
     __block char stop = 0;
     
@@ -570,8 +570,8 @@ static NSDateFormatter *TimeFormatter = nil;
                 return;
             }
             
-            [ethers setObject:[[mnemonicCounter hexString] substringFromIndex:2] forKey:@"mnemonicCounter"];
-            [ethers setObject:[[mnemonicCiphertext hexString] substringFromIndex:2] forKey:@"mnemonicCiphertext"];
+            [claim setObject:[[mnemonicCounter hexString] substringFromIndex:2] forKey:@"mnemonicCounter"];
+            [claim setObject:[[mnemonicCiphertext hexString] substringFromIndex:2] forKey:@"mnemonicCiphertext"];
         }
 
         
