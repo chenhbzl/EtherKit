@@ -137,7 +137,6 @@ static RegEx *RegExHex = nil;
     return self;
 }
 
-
 + (instancetype)secureData {
     return [self secureDataWithCapacity:0];
 }
@@ -202,6 +201,10 @@ static RegEx *RegExHex = nil;
     return [[self alloc] initWithData:data];
 }
 
++ (instancetype)secureDataWithString:(NSString*)string {
+    
+    return [[self alloc] initWithData:[string dataUsingEncoding:NSUTF8StringEncoding]];
+}
 
 #pragma mark - Convenience Functions
 

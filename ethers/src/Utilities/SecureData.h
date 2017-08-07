@@ -49,6 +49,7 @@
 + (instancetype)secureData;
 + (instancetype)secureDataWithCapacity: (NSUInteger)capacity;
 + (instancetype)secureDataWithData: (NSData*)data;
++ (instancetype)secureDataWithString: (NSString*)string;
 + (instancetype)secureDataWithHexString: (NSString*)hexString;
 + (instancetype)secureDataWithLength: (NSUInteger)length;
 
