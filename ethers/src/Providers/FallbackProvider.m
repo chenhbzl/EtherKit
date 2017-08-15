@@ -143,10 +143,10 @@
 
 #pragma mark - Calling
 
-- (id)executeOperation: (Promise* (^)(Provider*))startCallback promiseClass: (Class)promiseClass {
+- (id)executeOperation: (IPromise* (^)(Provider*))startCallback promiseClass: (Class)promiseClass {
     NSArray<Provider*> *providers = [self orderedProviders];
     
-    return [(Promise*)[promiseClass alloc] initWithSetup:^(Promise *promise) {
+    return [(IPromise*)[promiseClass alloc] initWithSetup:^(IPromise *promise) {
         if (providers.count == 0) {
             NSDictionary *userInfo = @{@"reason": @"no providers"};
             [promise reject:[NSError errorWithDomain:ProviderErrorDomain code:ProviderErrorInvalidParameters userInfo:userInfo]];
@@ -155,9 +155,9 @@
         
         void (^nextProvider)(NSUInteger, void (^)()) = ^(NSUInteger index, void (^nextProvider)()) {
             Provider *provider = [providers objectAtIndex:index];
-            [startCallback(provider) onCompletion:^(Promise *childPromise) {
+            [startCallback(provider) onCompletion:^(IPromise *childPromise) {
                 if (childPromise.error) {
-                    //NSLog(@"Fallback: error=%@ provider=%@", childPromise.error, provider);
+                    NSLog(@"\n\nFallback: error=%@ provider=%@\n\n", childPromise.error, provider);
                     if (index + 1 < providers.count) {
                         nextProvider(index + 1, nextProvider);
                     } else {
@@ -178,84 +178,84 @@
 #pragma mark - Methods
 
 - (BigNumberPromise*)getBalance: (Address*)address blockTag: (BlockTag)blockTag {
-    Promise* (^startCallback)(Provider*) = ^Promise*(Provider *provider) {
+    IPromise* (^startCallback)(Provider*) = ^IPromise*(Provider *provider) {
         return [provider getBalance:address blockTag:blockTag];
     };
     return [self executeOperation:startCallback promiseClass:[BigNumberPromise class]];
 }
 
 - (IntegerPromise*)getTransactionCount: (Address*)address blockTag: (BlockTag)blockTag {
-    Promise* (^startCallback)(Provider*) = ^Promise*(Provider *provider) {
+    IPromise* (^startCallback)(Provider*) = ^IPromise*(Provider *provider) {
         return [provider getTransactionCount:address blockTag:blockTag];
     };
     return [self executeOperation:startCallback promiseClass:[IntegerPromise class]];
 }
 
 - (IntegerPromise*)getBlockNumber {
-    Promise* (^startCallback)(Provider*) = ^Promise*(Provider *provider) {
+    IPromise* (^startCallback)(Provider*) = ^IPromise*(Provider *provider) {
         return [provider getBlockNumber];
     };
     return [self executeOperation:startCallback promiseClass:[IntegerPromise class]];
 }
 
 - (BigNumberPromise*)getGasPrice {
-    Promise* (^startCallback)(Provider*) = ^Promise*(Provider *provider) {
+    IPromise* (^startCallback)(Provider*) = ^IPromise*(Provider *provider) {
         return [provider getGasPrice];
     };
     return [self executeOperation:startCallback promiseClass:[BigNumberPromise class]];
 }
 
 - (DataPromise*)call: (Transaction*)transaction {
-    Promise* (^startCallback)(Provider*) = ^Promise*(Provider *provider) {
+    IPromise* (^startCallback)(Provider*) = ^IPromise*(Provider *provider) {
         return [provider call:transaction];
     };
     return [self executeOperation:startCallback promiseClass:[DataPromise class]];
 }
 
 - (BigNumberPromise*)estimateGas: (Transaction*)transaction {
-    Promise* (^startCallback)(Provider*) = ^Promise*(Provider *provider) {
+    IPromise* (^startCallback)(Provider*) = ^IPromise*(Provider *provider) {
         return [provider estimateGas:transaction];
     };
     return [self executeOperation:startCallback promiseClass:[BigNumberPromise class]];
 }
 
 - (HashPromise*)sendTransaction: (NSData*)signedTransaction {
-    Promise* (^startCallback)(Provider*) = ^Promise*(Provider *provider) {
+    IPromise* (^startCallback)(Provider*) = ^IPromise*(Provider *provider) {
         return [provider sendTransaction:signedTransaction];
     };
     return [self executeOperation:startCallback promiseClass:[HashPromise class]];
 }
 
 - (BlockInfoPromise*)getBlockByBlockHash: (Hash*)blockHash {
-    Promise* (^startCallback)(Provider*) = ^Promise*(Provider *provider) {
+    IPromise* (^startCallback)(Provider*) = ^IPromise*(Provider *provider) {
         return [provider getBlockByBlockHash:blockHash];
     };
     return [self executeOperation:startCallback promiseClass:[BlockInfoPromise class]];
 }
 
 - (BlockInfoPromise*)getBlockByBlockTag: (BlockTag)blockTag {
-    Promise* (^startCallback)(Provider*) = ^Promise*(Provider *provider) {
+    IPromise* (^startCallback)(Provider*) = ^IPromise*(Provider *provider) {
         return [provider getBlockByBlockTag:blockTag];
     };
     return [self executeOperation:startCallback promiseClass:[BlockInfoPromise class]];
 }
 
 - (TransactionInfoPromise*)getTransaction: (Hash*)transactionHash {
-    Promise* (^startCallback)(Provider*) = ^Promise*(Provider *provider) {
+    IPromise* (^startCallback)(Provider*) = ^IPromise*(Provider *provider) {
         return [provider getTransaction:transactionHash];
     };
     return [self executeOperation:startCallback promiseClass:[TransactionInfoPromise class]];
 }
 
 - (ArrayPromise*)getTransactions: (Address*)address startBlockTag: (BlockTag)blockTag {
-    Promise* (^startCallback)(Provider*) = ^Promise*(Provider *provider) {
+    IPromise* (^startCallback)(Provider*) = ^IPromise*(Provider *provider) {
         return [provider getTransactions:address startBlockTag:blockTag];
     };
     return [self executeOperation:startCallback promiseClass:[ArrayPromise class]];
 }
 
 - (FloatPromise*)getEtherPrice {
-    Promise* (^startCallback)(Provider*) = ^Promise*(Provider *provider) {
+    IPromise* (^startCallback)(Provider*) = ^IPromise*(Provider *provider) {
         return [provider getEtherPrice];
     };
     return [self executeOperation:startCallback promiseClass:[FloatPromise class]];

@@ -83,11 +83,13 @@ static NSData *NullData = nil;
             return nil;
         }
 
+        /* When deploying a contract we do not have a toAddress
         _toAddress = [Address addressWithString:queryPath(info, @"dictionary:to/string")];
         if (!_toAddress) {
             NSLog(@"ERROR: Invalid toAddress");
             return nil;
         }
+         */
         
         _gasLimit = queryPath(info, @"dictionary:gasLimit/bigNumber");
         if (!_gasLimit) {

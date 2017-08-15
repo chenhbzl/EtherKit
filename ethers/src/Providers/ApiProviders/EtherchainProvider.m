@@ -59,6 +59,7 @@
 }
 
 - (IntegerPromise*)getTransactionCount:(Address *)address {
+    
     NSObject* (^processResponse)(NSObject*) = ^NSObject*(NSObject *response) {
         return queryPath(response, @"array:0/dictionary:accountNonce/integerDecimal");
     };

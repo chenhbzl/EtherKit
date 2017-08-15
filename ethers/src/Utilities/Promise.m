@@ -29,16 +29,16 @@
 NSErrorDomain PromiseErrorDomain = @"PromiseErrorDomain";
 
 
-@implementation Promise {
-    NSMutableArray<void (^)(Promise*)> *_completionCallbacks;
-    Promise *_keepAlive;
+@implementation IPromise {
+    NSMutableArray<void (^)(IPromise*)> *_completionCallbacks;
+    IPromise *_keepAlive;
 }
 
-+ (instancetype)promiseWithSetup:(void (^)(Promise *))setupCallback {
++ (instancetype)promiseWithSetup:(void (^)(IPromise *))setupCallback {
     return [[self alloc] initWithSetup:setupCallback];
 }
 
-- (instancetype)initWithSetup: (void (^)(Promise*))setupCallback {
+- (instancetype)initWithSetup: (void (^)(IPromise*))setupCallback {
     if (!setupCallback) { return nil; }
     
     self = [super init];
@@ -55,7 +55,7 @@ NSErrorDomain PromiseErrorDomain = @"PromiseErrorDomain";
 - (void)executeCompletion {
 
     // This must be called from a synchronized block
-    for (void (^callback)(Promise*) in _completionCallbacks) {
+    for (void (^callback)(IPromise*) in _completionCallbacks) {
         dispatch_async(dispatch_get_main_queue(), ^() {
                 callback(self);
         });
@@ -80,7 +80,7 @@ NSErrorDomain PromiseErrorDomain = @"PromiseErrorDomain";
 - (void)reject: (NSError*)error {
     if (!error) { error = [NSError errorWithDomain:PromiseErrorDomain code:0 userInfo:@{}]; }
 
-    //NSLog(@"Rej: %@", error);
+    //NSLog(@"reject: %@", error);
     
     @synchronized (self) {
         if (_complete) { return; }
@@ -90,7 +90,7 @@ NSErrorDomain PromiseErrorDomain = @"PromiseErrorDomain";
     }
 }
 
-- (void)onCompletion: (void (^)(Promise*))completionCallback {
+- (void)onCompletion: (void (^)(IPromise*))completionCallback {
     @synchronized (self) {
         if (_complete) {
             dispatch_async(dispatch_get_main_queue(), ^() {
@@ -102,10 +102,10 @@ NSErrorDomain PromiseErrorDomain = @"PromiseErrorDomain";
     }
 }
 
-+ (ArrayPromise*)all: (NSArray<Promise*>*)promises {
++ (ArrayPromise*)all: (NSArray<IPromise*>*)promises {
     promises = [promises copy];
     
-    return [ArrayPromise promiseWithSetup:^(Promise *promise) {
+    return [ArrayPromise promiseWithSetup:^(IPromise *promise) {
         
         NSMutableArray *result = [NSMutableArray arrayWithCapacity:promises.count];
         for (NSInteger i = 0; i < promises.count; i++) {
@@ -115,7 +115,7 @@ NSErrorDomain PromiseErrorDomain = @"PromiseErrorDomain";
         __block NSUInteger remainingPromises = promises.count;
         
         for (NSInteger i = 0; i < promises.count; i++) {
-            [[promises objectAtIndex:i] onCompletion:^(Promise *childPromise) {
+            [[promises objectAtIndex:i] onCompletion:^(IPromise *childPromise) {
                 
                 // Already handled
                 if (promise.complete) { return; }
@@ -136,14 +136,14 @@ NSErrorDomain PromiseErrorDomain = @"PromiseErrorDomain";
     }];
 }
 
-+ (Promise*)resolved: (NSObject*)result {
-    return [[self alloc] initWithSetup:^(Promise *promise) {
++ (IPromise*)resolved: (NSObject*)result {
+    return [[self alloc] initWithSetup:^(IPromise *promise) {
         [promise resolve:result];
     }];
 }
 
-+ (Promise*)rejected: (NSError*)error {
-    return [[self alloc] initWithSetup:^(Promise *promise) {
++ (IPromise*)rejected: (NSError*)error {
+    return [[self alloc] initWithSetup:^(IPromise *promise) {
         [promise reject:error];
     }];
 }
@@ -184,7 +184,7 @@ NSErrorDomain PromiseErrorDomain = @"PromiseErrorDomain";
 }
 
 - (void)onCompletion: (void (^)(ArrayPromise*))completionCallback {
-    return [super onCompletion:^(Promise *promise) {
+    return [super onCompletion:^(IPromise *promise) {
         completionCallback((ArrayPromise*)self);
     }];
 }
@@ -209,7 +209,7 @@ NSErrorDomain PromiseErrorDomain = @"PromiseErrorDomain";
 }
 
 - (void)onCompletion: (void (^)(BigNumberPromise*))completionCallback {
-    return [super onCompletion:^(Promise *promise) {
+    return [super onCompletion:^(IPromise *promise) {
         completionCallback((BigNumberPromise*)self);
     }];
 }
@@ -235,7 +235,7 @@ NSErrorDomain PromiseErrorDomain = @"PromiseErrorDomain";
 }
 
 - (void)onCompletion: (void (^)(BlockInfoPromise*))completionCallback {
-    return [super onCompletion:^(Promise *promise) {
+    return [super onCompletion:^(IPromise *promise) {
         completionCallback((BlockInfoPromise*)self);
     }];
 }
@@ -260,7 +260,7 @@ NSErrorDomain PromiseErrorDomain = @"PromiseErrorDomain";
 }
 
 - (void)onCompletion: (void (^)(DataPromise*))completionCallback {
-    return [super onCompletion:^(Promise *promise) {
+    return [super onCompletion:^(IPromise *promise) {
         completionCallback((DataPromise*)self);
     }];
 }
@@ -310,7 +310,7 @@ NSErrorDomain PromiseErrorDomain = @"PromiseErrorDomain";
 }
 
 - (void)onCompletion: (void (^)(FloatPromise*))completionCallback {
-    return [super onCompletion:^(Promise *promise) {
+    return [super onCompletion:^(IPromise *promise) {
         completionCallback((FloatPromise*)self);
     }];
 }
@@ -335,7 +335,7 @@ NSErrorDomain PromiseErrorDomain = @"PromiseErrorDomain";
 }
 
 - (void)onCompletion: (void (^)(HashPromise*))completionCallback {
-    return [super onCompletion:^(Promise *promise) {
+    return [super onCompletion:^(IPromise *promise) {
         completionCallback((HashPromise*)self);
     }];
 }
@@ -360,7 +360,7 @@ NSErrorDomain PromiseErrorDomain = @"PromiseErrorDomain";
 }
 
 - (void)onCompletion: (void (^)(IntegerPromise*))completionCallback {
-    return [super onCompletion:^(Promise *promise) {
+    return [super onCompletion:^(IPromise *promise) {
         completionCallback((IntegerPromise*)self);
     }];
 }
@@ -385,7 +385,7 @@ NSErrorDomain PromiseErrorDomain = @"PromiseErrorDomain";
 }
 
 - (void)onCompletion: (void (^)(NumberPromise*))completionCallback {
-    return [super onCompletion:^(Promise *promise) {
+    return [super onCompletion:^(IPromise *promise) {
         completionCallback((NumberPromise*)self);
     }];
 }
@@ -410,7 +410,7 @@ NSErrorDomain PromiseErrorDomain = @"PromiseErrorDomain";
 }
 
 - (void)onCompletion: (void (^)(StringPromise*))completionCallback {
-    return [super onCompletion:^(Promise *promise) {
+    return [super onCompletion:^(IPromise *promise) {
         completionCallback((StringPromise*)self);
     }];
 }
@@ -427,7 +427,10 @@ NSErrorDomain PromiseErrorDomain = @"PromiseErrorDomain";
 }
 
 - (void)resolve:(NSObject *)result {
-    if (result && ![result isKindOfClass:[TransactionInfo class]]) {
+    
+   // NSLog(@"resolve result %@",result);
+
+    if (result  && ![result isKindOfClass:[TransactionInfo class]] ) {
         [super reject:[NSError errorWithDomain:PromiseErrorDomain code:0 userInfo:@{@"reason": @"invalid value", @"value": result}]];
         return;
     }
@@ -435,7 +438,7 @@ NSErrorDomain PromiseErrorDomain = @"PromiseErrorDomain";
 }
 
 - (void)onCompletion: (void (^)(TransactionInfoPromise*))completionCallback {
-    return [super onCompletion:^(Promise *promise) {
+    return [super onCompletion:^(IPromise *promise) {
         completionCallback((TransactionInfoPromise*)self);
     }];
 }

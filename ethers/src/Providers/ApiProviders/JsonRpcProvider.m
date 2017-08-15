@@ -102,7 +102,7 @@
     
     if (error) {
         NSDictionary *userInfo = @{@"reason": @"invalid JSON values", @"error": error};
-        return [Promise rejected:[NSError errorWithDomain:ProviderErrorDomain code:ProviderErrorInvalidParameters userInfo:userInfo]];
+        return [IPromise rejected:[NSError errorWithDomain:ProviderErrorDomain code:ProviderErrorInvalidParameters userInfo:userInfo]];
     }
 
     NSObject* (^processResponse)(NSDictionary*) = ^NSObject*(NSDictionary *response) {

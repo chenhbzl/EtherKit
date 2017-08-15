@@ -133,7 +133,7 @@ NSString* queryifyTransaction(Transaction *transaction) {
 #pragma mark - Calling
 
 - (NSURL*)urlForPath: (NSString*)path {
-    NSString *host = (self.testnet ? @"rinkeby.etherscan.io": @"api.etherscan.io");
+    NSString *host = (self.testnet ? @"ropsten.etherscan.io": @"api.etherscan.io");
     NSString *apiKey = (_apiKey ? [NSString stringWithFormat:@"&apikey=%@", _apiKey]: @"");
     return [NSURL URLWithString:[NSString stringWithFormat:@"https://%@%@%@", host, path, apiKey]];
 }
@@ -154,6 +154,7 @@ NSString* queryifyTransaction(Transaction *transaction) {
 }
 
 - (id)promiseFetchProxyAction: (NSString*)action fetchType: (ApiProviderFetchType)fetchType {
+    
     NSURL *url = [self urlForProxyAction:action];
     return [self promiseFetchJSON:url body:nil fetchType:fetchType process:^NSObject*(NSDictionary *response) {
         return [response objectForKey:@"result"];
@@ -227,10 +228,10 @@ NSString* queryifyTransaction(Transaction *transaction) {
     return [self promiseFetchProxyAction:action fetchType:ApiProviderFetchTypeHash];
 }
 
-//- (BlockInfoPromise*)getBlockByBlockHash: (Hash*)blockHash {
-//    NSString *action = [NSString stringWithFormat:@"action=eth_getTransactionByHash&txhash=%@", transactionHash.hexString];
-//    return [self promiseFetchProxyAction:action fetchType:ApiProviderFetchTypeTransactionInfo];
-//}
+- (BlockInfoPromise*)getBlockByBlockHash: (Hash*)blockHash {
+    NSString *action = [NSString stringWithFormat:@"action=eth_getTransactionByHash&txhash=%@&boolean=true", blockHash.hexString];
+    return [self promiseFetchProxyAction:action fetchType:ApiProviderFetchTypeTransactionInfo];
+}
 
 - (BlockInfoPromise*)getBlockByBlockTag: (BlockTag)blockTag {
     NSString *tag = getBlockTag(blockTag);
@@ -243,8 +244,16 @@ NSString* queryifyTransaction(Transaction *transaction) {
 }
 
 - (TransactionInfoPromise*)getTransaction: (Hash*)transactionHash {
+    
+
+    NSLog(@"\n\ngetTransaction: transactionHash  %@ \n\n",transactionHash.debugDescription);
+    
     NSString *action = [NSString stringWithFormat:@"action=eth_getTransactionByHash&txhash=%@", transactionHash.hexString];
-    return [self promiseFetchProxyAction:action fetchType:ApiProviderFetchTypeTransactionInfo];
+    NSLog(@"getTransaction: %@",action);
+    TransactionInfoPromise* result = [self promiseFetchProxyAction:action fetchType:ApiProviderFetchTypeTransactionInfo];
+    //NSLog(@"result.value: %@",result.value);
+    
+    return result;
 }
 
 - (ArrayPromise*)getTransactions: (Address*)address startBlockTag: (BlockTag)blockTag {

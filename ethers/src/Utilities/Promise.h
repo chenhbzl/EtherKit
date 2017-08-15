@@ -62,19 +62,19 @@ extern NSErrorDomain PromiseErrorDomain;
 @class ArrayPromise;
 
 
-@interface Promise : NSObject
+@interface IPromise : NSObject
 
 
 #pragma mark - Creating a new Promise
 
-- (instancetype)initWithSetup: (void (^)(Promise*))setupCallback;
+- (instancetype)initWithSetup: (void (^)(IPromise*))setupCallback;
 
-+ (instancetype)promiseWithSetup: (void (^)(Promise*))setupCallback;
++ (instancetype)promiseWithSetup: (void (^)(IPromise*))setupCallback;
 
 + (instancetype)resolved: (NSObject*)result;
 + (instancetype)rejected: (NSError*)error;
 
-+ (ArrayPromise*)all: (NSArray<Promise*>*)promises;
++ (ArrayPromise*)all: (NSArray<IPromise*>*)promises;
 
 // Like JavaScript's race, whichever returns first
 //+ (inst)any: (NSArray<Promise*>*)promises;
@@ -99,7 +99,7 @@ extern NSErrorDomain PromiseErrorDomain;
 
 #pragma mark - Adding a callback to be notified on completion (this may be called many times, including after complete)
 
-- (void)onCompletion: (void (^)(Promise*))completionCallback;
+- (void)onCompletion: (void (^)(IPromise*))completionCallback;
 
 @end
 
@@ -107,7 +107,7 @@ extern NSErrorDomain PromiseErrorDomain;
 #pragma mark -
 #pragma mark - ArrayPromise
 
-@interface ArrayPromise: Promise
+@interface ArrayPromise: IPromise
 
 @property (atomic, readonly) NSArray *value;
 
@@ -119,7 +119,7 @@ extern NSErrorDomain PromiseErrorDomain;
 #pragma mark -
 #pragma mark - BigNumberPromise
 
-@interface BigNumberPromise: Promise
+@interface BigNumberPromise: IPromise
 
 @property (atomic, readonly) BigNumber *value;
 
@@ -131,7 +131,7 @@ extern NSErrorDomain PromiseErrorDomain;
 #pragma mark -
 #pragma mark - BlockInfoPromise
 
-@interface BlockInfoPromise: Promise
+@interface BlockInfoPromise: IPromise
 
 @property (atomic, readonly) BlockInfo *value;
 
@@ -143,7 +143,7 @@ extern NSErrorDomain PromiseErrorDomain;
 #pragma mark -
 #pragma mark - DataPromise
 
-@interface DataPromise: Promise
+@interface DataPromise: IPromise
 
 @property (atomic, readonly) NSData *value;
 
@@ -167,7 +167,7 @@ extern NSErrorDomain PromiseErrorDomain;
 #pragma mark -
 #pragma mark - FloatPromise
 
-@interface FloatPromise: Promise
+@interface FloatPromise: IPromise
 
 @property (atomic, readonly) float value;
 
@@ -179,7 +179,7 @@ extern NSErrorDomain PromiseErrorDomain;
 #pragma mark -
 #pragma mark - HashPromise
 
-@interface HashPromise: Promise
+@interface HashPromise: IPromise
 
 @property (atomic, readonly) Hash *value;
 
@@ -191,7 +191,7 @@ extern NSErrorDomain PromiseErrorDomain;
 #pragma mark -
 #pragma mark - IntegerPromise
 
-@interface IntegerPromise: Promise
+@interface IntegerPromise: IPromise
 
 @property (atomic, readonly) NSInteger value;
 
@@ -203,7 +203,7 @@ extern NSErrorDomain PromiseErrorDomain;
 #pragma mark -
 #pragma mark - NumberPromise
 
-@interface NumberPromise: Promise
+@interface NumberPromise: IPromise
 
 @property (atomic, readonly) NSNumber *value;
 
@@ -215,7 +215,7 @@ extern NSErrorDomain PromiseErrorDomain;
 #pragma mark -
 #pragma mark - StringPromise
 
-@interface StringPromise: Promise
+@interface StringPromise: IPromise
 
 @property (atomic, readonly) NSString *value;
 
@@ -227,7 +227,7 @@ extern NSErrorDomain PromiseErrorDomain;
 #pragma mark -
 #pragma mark - TransactionInfoPromise
 
-@interface TransactionInfoPromise: Promise
+@interface TransactionInfoPromise: IPromise
 
 @property (atomic, readonly) TransactionInfo *value;
 

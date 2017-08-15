@@ -89,7 +89,7 @@ static NSString *UserAgent = nil;
                     case ProviderErrorNotAuthorized:
                         return @"Not Authorized";
                     case ProviderErrorNotImplemented:
-                        return @"Not Implmented";
+                        return @"Not Implemented";
                     case ProviderErrorConnectionFailed:
                         return @"Connection Failed";
                     case ProviderErrorInvalidParameters:

@@ -138,7 +138,7 @@ Class getPromiseClass(ApiProviderFetchType fetchType) {
         case ApiProviderFetchTypeIntegerHexString:
             return [IntegerPromise class];
         case ApiProviderFetchTypeObject:
-            return [Promise class];
+            return [IPromise class];
         case ApiProviderFetchTypeTransactionInfo:
             return [TransactionInfoPromise class];
         default:
@@ -390,7 +390,7 @@ NSMutableDictionary *transactionObject(Transaction *transaction) {
 - (id)promiseFetch:(NSURL *)url body:(NSData *)body fetchType:(ApiProviderFetchType)fetchType process:(NSObject *(^)(NSData*))process {
     Class promiseClass = getPromiseClass(fetchType);
     
-    return [(Promise*)[promiseClass alloc] initWithSetup:^(Promise *promise) {
+    return [(IPromise*)[promiseClass alloc] initWithSetup:^(IPromise *promise) {
         [self fetch:url body:body callback:^(NSData *response, NSError *error) {
             if (error) {
                 [promise reject:error];
@@ -446,8 +446,15 @@ NSMutableDictionary *transactionObject(Transaction *transaction) {
     
     return [self promiseFetch:url body:body fetchType:fetchType process:^NSObject*(NSData *response) {
         
+        
         NSError *jsonError = nil;
         NSDictionary *result = [NSJSONSerialization JSONObjectWithData:response options:0 error:&jsonError];
+        
+        if (fetchType == ApiProviderFetchTypeTransactionInfo) {
+            NSLog(@"%@",url.debugDescription);
+            NSLog(@"%@",result.debugDescription);
+        }
+        
         if (jsonError) {
             NSDictionary *userInfo = @{@"error": jsonError, @"reason": @"invalid JSON"};
             return [NSError errorWithDomain:ProviderErrorDomain code:ProviderErrorBadResponse userInfo:userInfo];
@@ -455,6 +462,12 @@ NSMutableDictionary *transactionObject(Transaction *transaction) {
         } else if (!result) {
             NSDictionary *userInfo = @{@"reason": @"missing result"};
             return [NSError errorWithDomain:ProviderErrorDomain code:ProviderErrorBadResponse userInfo:userInfo];
+        }
+        
+        if (fetchType == ApiProviderFetchTypeTransactionInfo)
+        {
+            NSLog(@"promiseFetchJSON %@ ", result.allValues);
+            
         }
         
         return process(result);
