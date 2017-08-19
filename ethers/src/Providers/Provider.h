@@ -126,6 +126,8 @@ NSString *getBlockTag(BlockTag blockTag);
 
 - (TransactionInfoPromise*)getTransaction: (Hash*)transactionHash;
 
+- (TransactionReceiptPromise*)getTransactionReceipt: (Hash*)transactionHash;
+
 - (ArrayPromise*)getTransactions: (Address*)address startBlockTag: (BlockTag)blockTag;
 
 - (FloatPromise*)getEtherPrice;

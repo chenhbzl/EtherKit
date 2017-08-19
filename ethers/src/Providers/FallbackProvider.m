@@ -157,7 +157,7 @@
             Provider *provider = [providers objectAtIndex:index];
             [startCallback(provider) onCompletion:^(IPromise *childPromise) {
                 if (childPromise.error) {
-                    NSLog(@"\n\nFallback: error=%@ provider=%@\n\n", childPromise.error, provider);
+                    //NSLog(@"\n\nFallback: error=%@ provider=%@\n\n", childPromise.error, provider);
                     if (index + 1 < providers.count) {
                         nextProvider(index + 1, nextProvider);
                     } else {
@@ -238,6 +238,13 @@
         return [provider getBlockByBlockTag:blockTag];
     };
     return [self executeOperation:startCallback promiseClass:[BlockInfoPromise class]];
+}
+
+- (TransactionReceiptPromise*)getTransactionReceipt: (Hash*)transactionHash {
+    IPromise* (^startCallback)(Provider*) = ^IPromise*(Provider *provider) {
+        return [provider getTransactionReceipt:transactionHash];
+    };
+    return [self executeOperation:startCallback promiseClass:[TransactionReceiptPromise class]];
 }
 
 - (TransactionInfoPromise*)getTransaction: (Hash*)transactionHash {

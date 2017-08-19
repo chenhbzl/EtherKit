@@ -258,6 +258,7 @@ static NSDateFormatter *TimeFormatter = nil;
     
     void (^sendError)(NSInteger, NSString*) = ^(NSInteger errorCode, NSString *reason) {
         dispatch_async(dispatch_get_main_queue(), ^() {
+            NSLog(@"decryptSecretStorageJSON %@",reason);
             callback(nil, [NSError errorWithDomain:ErrorDomain code:errorCode userInfo:@{@"reason": reason}]);
         });
     };

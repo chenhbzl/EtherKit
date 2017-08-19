@@ -49,6 +49,7 @@ typedef NS_OPTIONS(NSUInteger, ApiProviderFetchType) {
 
     ApiProviderFetchTypeBlockInfo,
     ApiProviderFetchTypeTransactionInfo,
+    ApiProviderFetchTypeTransactionReceipt,
 
     ApiProviderFetchTypeBigNumber,
     ApiProviderFetchTypeBigNumberDecimal,

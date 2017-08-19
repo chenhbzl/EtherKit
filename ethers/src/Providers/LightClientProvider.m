@@ -132,7 +132,7 @@ void sigPipe(int input) {
             }
         }
         
-        
+         
         [NSTimer scheduledTimerWithTimeInterval:4.0f repeats:YES block:^(NSTimer *timer) {
             NSLog(@"Getting Balance...");
             GoGethAddress *address = getAddress([Address addressWithString:@"0x0b7FC9DDF70576F6330669EaAA71B6a831e99528"]);

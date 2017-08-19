@@ -217,6 +217,10 @@ static NSString *UserAgent = nil;
     return [self sendNotImplemented:@"getBlockByBlockTag" promiseClass:[BlockInfoPromise class]];
 }
 
+- (TransactionReceiptPromise*)getTransactionReceipt: (Hash*)transactionHash {
+    return [self sendNotImplemented:@"getTransactionReceipt" promiseClass:[TransactionReceiptPromise class]];
+}
+
 - (TransactionInfoPromise*)getTransaction: (Hash*)transactionHash {
     return [self sendNotImplemented:@"getTransaction" promiseClass:[TransactionInfoPromise class]];
 }

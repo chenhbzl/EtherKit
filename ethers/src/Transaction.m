@@ -74,7 +74,7 @@ static NSData *NullData = nil;
     });
 }
 
-- (instancetype)initWithFromAddress: (Address*)fromAddress {
+- (instancetype)initWithFromAddress: (Address*)fromAddress{
     self = [self init];
     if (self) {
         _fromAddress = fromAddress;
@@ -86,11 +86,11 @@ static NSData *NullData = nil;
     return [[Transaction alloc] init];
 }
 
-+ (instancetype)transactionWithFromAddress:(Address*)fromAddress {
++ (instancetype)transactionWithFromAddress:(Address*)fromAddress{
     return [[Transaction alloc] initWithFromAddress:fromAddress];
 }
 
-+ (instancetype)transactionWithData: (NSData*)transactionData {
++ (instancetype)transactionWithData: (NSData*)transactionData{
     
     // Thinking out loud: Is there ANY difference between a transaction without a gasPrice
     // and one with a gasPrice of zero? If not, we should instantiate BigNumbers for
@@ -182,8 +182,6 @@ static NSData *NullData = nil;
         
         [transaction verifySignatureData:data v:v];
     }
-
-    
     return transaction;
 }
 
@@ -220,6 +218,9 @@ static NSData *NullData = nil;
 - (void)sign:(Account *)account {
     if (account) {
         NSMutableArray *raw = [self _packBasic];
+        
+        NSLog(@"%u %@",_chainId,dataWithByte(_chainId));
+        
         if (_chainId) {
             [raw addObject:dataWithByte(_chainId)];
             [raw addObject:NullData];

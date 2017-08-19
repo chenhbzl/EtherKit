@@ -101,25 +101,27 @@
     NSData *body = [NSJSONSerialization dataWithJSONObject:request options:0 error:&error];
     
     if (error) {
-        NSDictionary *userInfo = @{@"reason": @"invalid JSON values", @"error": error};
+        NSDictionary *userInfo = @{@"JSON Serialization Error Reason": @"invalid JSON values", @"error": error};
         return [IPromise rejected:[NSError errorWithDomain:ProviderErrorDomain code:ProviderErrorInvalidParameters userInfo:userInfo]];
     }
 
     NSObject* (^processResponse)(NSDictionary*) = ^NSObject*(NSDictionary *response) {
         NSDictionary *rpcError = [response objectForKey:@"error"];
         if (rpcError) {
-            NSDictionary *userInfo = @{@"reason": [NSString stringWithFormat:@"%@", [rpcError objectForKey:@"message"]]};
+            NSDictionary *userInfo = @{@"RPC Error Reason": [NSString stringWithFormat:@"%@", [rpcError objectForKey:@"message"]]};
             return [NSError errorWithDomain:ProviderErrorDomain code:ProviderErrorBadResponse userInfo:userInfo];
         }
 
         NSObject *result = [response objectForKey:@"result"];
         if (!result) {
-            NSDictionary *userInfo = @{@"reason": @"invalid result"};
+            NSDictionary *userInfo = @{@"Result Error Reason": @"invalid result"};
             return [NSError errorWithDomain:ProviderErrorDomain code:ProviderErrorBadResponse userInfo:userInfo];
         }
         
         return result; //coerceValue(result, fetchType);
     };
+    
+    //NSLog(@"sendMethod: %@",method);
     
     return [self promiseFetchJSON:_url
                              body:body
@@ -181,6 +183,9 @@
 }
 
 - (HashPromise*)sendTransaction:(NSData *)signedTransaction {
+    
+    //NSLog(@"JsonRpcProvider sendTransaction %@", signedTransaction);
+    
     if (!signedTransaction) {
         return [HashPromise rejected:[NSError errorWithDomain:ProviderErrorDomain code:ProviderErrorInvalidParameters userInfo:@{}]];
     }
@@ -232,22 +237,36 @@
     
     return result;
 }
- */
+ 
+ 
+*/
+
+- (TransactionReceiptPromise*)getTransactionReceipt:(Hash *)transactionHash {
+    
+    if (!transactionHash) {
+        return [TransactionReceiptPromise rejected:[NSError errorWithDomain:ProviderErrorDomain code:ProviderErrorInvalidParameters userInfo:@{}]];
+    }
+    
+    
+    return [self sendMethod:@"eth_getTransactionReceipt" params:@[transactionHash.hexString] fetchType:ApiProviderFetchTypeTransactionReceipt];
+    
+}
 
 - (TransactionInfoPromise*)getTransaction:(Hash *)transactionHash {
+    
     if (!transactionHash) {
         return [TransactionInfoPromise rejected:[NSError errorWithDomain:ProviderErrorDomain code:ProviderErrorInvalidParameters userInfo:@{}]];
     }
     
-    return [self sendMethod:@"eth_getTransactionByHash"
-                     params:@[transactionHash.hexString]
-                  fetchType:ApiProviderFetchTypeTransactionInfo];
+    
+    return [self sendMethod:@"eth_getTransactionByHash" params:@[transactionHash.hexString] fetchType:ApiProviderFetchTypeTransactionInfo];
+    
 }
 
 #pragma mark - NSObject
 
 - (NSString*)description {
-    return [NSString stringWithFormat:@"<JsonRpcProvider tetnet=%@ url=%@>", (self.testnet ? @"YES": @"NO"), _url];
+    return [NSString stringWithFormat:@"<JsonRpcProvider testnet=%@ url=%@>", (self.testnet ? @"YES": @"NO"), _url];
 }
 
 @end

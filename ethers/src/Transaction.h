@@ -44,12 +44,14 @@
  *  See: https://github.com/ethereum/EIPs/issues/155
  */
 
-typedef NS_OPTIONS(unsigned char, ChainId)  {
+typedef NS_OPTIONS(unsigned int, ChainId)  {
     ChianIdAny          = 0x00,
     ChainIdHomestead    = 0x01,
     ChainIdMorden       = 0x02,
     ChainIdRopsten      = 0x03,
     ChainIdRinkeby      = 0x04,
+ //   ChainIdCareChain    = 0xA18E
+    ChainIdCareChain    = 0x0
 };
 
 //typedef unsigned long long Nonce;
@@ -73,7 +75,6 @@ typedef NS_OPTIONS(unsigned char, ChainId)  {
 @property (nonatomic, readonly, nullable) Signature *signature;
 
 @property (nonatomic, readonly, nullable) Address *fromAddress;
-
 @property (nonatomic, assign) ChainId chainId;
 
 - (nonnull NSData*)serialize;

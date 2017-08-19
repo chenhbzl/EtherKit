@@ -249,8 +249,26 @@ NSString* queryifyTransaction(Transaction *transaction) {
     NSLog(@"\n\ngetTransaction: transactionHash  %@ \n\n",transactionHash.debugDescription);
     
     NSString *action = [NSString stringWithFormat:@"action=eth_getTransactionByHash&txhash=%@", transactionHash.hexString];
-    NSLog(@"getTransaction: %@",action);
-    TransactionInfoPromise* result = [self promiseFetchProxyAction:action fetchType:ApiProviderFetchTypeTransactionInfo];
+    
+    __block TransactionInfoPromise* result;
+    
+    [NSTimer scheduledTimerWithTimeInterval:4.0f repeats:YES block:^(NSTimer *timer) {
+        
+        NSLog(@"getTransaction: %@",action);
+        result = [self promiseFetchProxyAction:action fetchType:ApiProviderFetchTypeTransactionInfo];
+        
+        if (result != nil && result.value != nil)
+        {
+            NSLog(@"heard back result.value: %@",result.value);
+            [timer invalidate];
+            timer = nil;
+        } else {
+            NSLog(@"waiting for transaction to be mined");
+        }
+        
+    }];
+    
+
     //NSLog(@"result.value: %@",result.value);
     
     return result;

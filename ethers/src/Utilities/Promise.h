@@ -51,6 +51,7 @@
 #import "BlockInfo.h"
 #import "Hash.h"
 #import "TransactionInfo.h"
+#import "TransactionReceipt.h"
 
 
 #pragma mark -
@@ -234,4 +235,16 @@ extern NSErrorDomain PromiseErrorDomain;
 - (void)onCompletion: (void (^)(TransactionInfoPromise*))completionCallback;
 
 @end
+
+#pragma mark -
+#pragma mark - TransactionReceiptPromise
+
+@interface TransactionReceiptPromise: IPromise
+
+@property (atomic, readonly) TransactionReceipt *value;
+
+- (void)onCompletion: (void (^)(TransactionReceiptPromise*))completionCallback;
+
+@end
+
 

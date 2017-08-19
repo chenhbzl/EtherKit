@@ -444,3 +444,32 @@ NSErrorDomain PromiseErrorDomain = @"PromiseErrorDomain";
 }
 
 @end
+
+
+@implementation TransactionReceiptPromise
+
+- (TransactionReceipt*)value {
+    TransactionReceipt *value = (TransactionReceipt*)(super.result);
+    if ([[NSNull null] isEqual:value]) { value = nil; }
+    return value;
+}
+
+- (void)resolve:(NSObject *)result {
+    
+    // NSLog(@"resolve result %@",result);
+    
+    if (result  && ![result isKindOfClass:[TransactionReceipt class]] ) {
+        [super reject:[NSError errorWithDomain:PromiseErrorDomain code:0 userInfo:@{@"reason": @"invalid value", @"value": result}]];
+        return;
+    }
+    [super resolve:result];
+}
+
+- (void)onCompletion: (void (^)(TransactionReceiptPromise*))completionCallback {
+    return [super onCompletion:^(IPromise *promise) {
+        completionCallback((TransactionReceiptPromise*)self);
+    }];
+}
+
+@end
+

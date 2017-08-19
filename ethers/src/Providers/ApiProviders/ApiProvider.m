@@ -141,6 +141,8 @@ Class getPromiseClass(ApiProviderFetchType fetchType) {
             return [IPromise class];
         case ApiProviderFetchTypeTransactionInfo:
             return [TransactionInfoPromise class];
+        case ApiProviderFetchTypeTransactionReceipt:
+            return [TransactionReceiptPromise class];
         default:
             break;
     }
@@ -217,6 +219,11 @@ id coerceValue(NSObject *value, ApiProviderFetchType fetchType) {
                 return value;
             }
             return [TransactionInfo transactionInfoFromDictionary:coerceValue(value, ApiProviderFetchTypeDictionary)];
+        case ApiProviderFetchTypeTransactionReceipt:
+            if ([value isKindOfClass:[TransactionReceipt class]]) {
+                return value;
+            }
+            return [TransactionReceipt transactionReceiptFromDictionary:coerceValue(value, ApiProviderFetchTypeDictionary)];
             
         case ApiProviderFetchTypeNil:
             break;
@@ -262,8 +269,10 @@ static ApiProviderFetchType fetchTypeForPathString(NSString *pathComponent) {
         return ApiProviderFetchTypeString;
     } else if ([pathComponent isEqualToString:@"transactionInfo"]) {
         return ApiProviderFetchTypeTransactionInfo;
+    } else if ([pathComponent isEqualToString:@"transactionReceipt"]) {
+        return ApiProviderFetchTypeTransactionReceipt;
     }
-    
+
     NSLog(@"WARNING: Unhandled path type - %@", pathComponent);
     
     return ApiProviderFetchTypeNil;
@@ -446,14 +455,15 @@ NSMutableDictionary *transactionObject(Transaction *transaction) {
     
     return [self promiseFetch:url body:body fetchType:fetchType process:^NSObject*(NSData *response) {
         
-        
         NSError *jsonError = nil;
         NSDictionary *result = [NSJSONSerialization JSONObjectWithData:response options:0 error:&jsonError];
         
+        /*
         if (fetchType == ApiProviderFetchTypeTransactionInfo) {
             NSLog(@"%@",url.debugDescription);
             NSLog(@"%@",result.debugDescription);
         }
+        */
         
         if (jsonError) {
             NSDictionary *userInfo = @{@"error": jsonError, @"reason": @"invalid JSON"};
@@ -464,10 +474,9 @@ NSMutableDictionary *transactionObject(Transaction *transaction) {
             return [NSError errorWithDomain:ProviderErrorDomain code:ProviderErrorBadResponse userInfo:userInfo];
         }
         
-        if (fetchType == ApiProviderFetchTypeTransactionInfo)
+        if (fetchType == ApiProviderFetchTypeTransactionReceipt)
         {
-            NSLog(@"promiseFetchJSON %@ ", result.allValues);
-            
+            NSLog(@"ApiProviderFetchTypeTransactionReceipt  promiseFetchJSON %@ ", result.debugDescription);
         }
         
         return process(result);
