@@ -473,12 +473,12 @@ NSMutableDictionary *transactionObject(Transaction *transaction) {
             NSDictionary *userInfo = @{@"reason": @"missing result"};
             return [NSError errorWithDomain:ProviderErrorDomain code:ProviderErrorBadResponse userInfo:userInfo];
         }
-        
+        /*
         if (fetchType == ApiProviderFetchTypeTransactionReceipt)
         {
             NSLog(@"ApiProviderFetchTypeTransactionReceipt  promiseFetchJSON %@ ", result.debugDescription);
         }
-        
+        */
         return process(result);
     }];
 }

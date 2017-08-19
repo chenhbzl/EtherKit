@@ -205,6 +205,26 @@ static RegEx *MixedCaseAddressRegex = nil;
     return [Address normalizeAddress:_checksumAddress icap:YES];
 }
 
+
+- (NSString*)proxyIcapAddress {
+    return [Address normalizeAddress:_proxyAddress icap:YES];
+}
+
+- (void)setProxyAddress:(NSString *)proxyAddress
+{
+    _proxyAddress = proxyAddress;
+}
+
+- (void)setControllerAddress:(NSString *)controllerAddress
+{
+    _controllerAddress = controllerAddress;
+}
+
+- (void)setRecoveryKeyAddress:(NSString *)recoveryKeyAddress
+{
+    _recoveryKeyAddress = recoveryKeyAddress;
+}
+
 - (BOOL)isZeroAddress {
     return [self isEqualToAddress:ZeroAddress];
 }
