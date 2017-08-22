@@ -24,7 +24,6 @@
  */
 
 #import "ApiProvider.h"
-
 #import "SecureData.h"
 
 
@@ -115,41 +114,6 @@ Address *ensureAddress(NSObject *object) {
     return [Address addressWithData:ensureData(object)];
 }
 
-Class getPromiseClass(ApiProviderFetchType fetchType) {
-    switch (fetchType) {
-        case ApiProviderFetchTypeArray:
-            return [ArrayPromise class];
-        case ApiProviderFetchTypeBigNumber:
-        case ApiProviderFetchTypeBigNumberDecimal:
-        case ApiProviderFetchTypeBigNumberHexString:
-            return [BigNumberPromise class];
-        case ApiProviderFetchTypeBlockInfo:
-            return [BlockInfoPromise class];
-        case ApiProviderFetchTypeData:
-            return [DataPromise class];
-        case ApiProviderFetchTypeFloat:
-            return [FloatPromise class];
-        case ApiProviderFetchTypeHash:
-            return [HashPromise class];
-        case ApiProviderFetchTypeString:
-            return [StringPromise class];
-        case ApiProviderFetchTypeInteger:
-        case ApiProviderFetchTypeIntegerDecimal:
-        case ApiProviderFetchTypeIntegerHexString:
-            return [IntegerPromise class];
-        case ApiProviderFetchTypeObject:
-            return [IPromise class];
-        case ApiProviderFetchTypeTransactionInfo:
-            return [TransactionInfoPromise class];
-        case ApiProviderFetchTypeTransactionReceipt:
-            return [TransactionReceiptPromise class];
-        default:
-            break;
-    }
-    
-    return nil;
-}
-
 id coerceValue(NSObject *value, ApiProviderFetchType fetchType) {
     switch (fetchType) {
         case ApiProviderFetchTypeAddress:
@@ -223,6 +187,7 @@ id coerceValue(NSObject *value, ApiProviderFetchType fetchType) {
             if ([value isKindOfClass:[TransactionReceipt class]]) {
                 return value;
             }
+            NSLog(@"coerceValue %@",value);
             return [TransactionReceipt transactionReceiptFromDictionary:coerceValue(value, ApiProviderFetchTypeDictionary)];
             
         case ApiProviderFetchTypeNil:
@@ -326,162 +291,10 @@ NSMutableDictionary *transactionObject(Transaction *transaction) {
 #pragma mark - ApiProvider
 
 @implementation ApiProvider {
-    NSTimer *_statsTimer;
-    NSTimeInterval _startTime;
-    
-    NSUInteger _requestCount, _errorCount;
-}
+ }
 
-- (instancetype)initWithTestnet:(BOOL)testnet {
-    self = [super initWithTestnet:testnet];
-    if (self) {
-        _startTime = [NSDate timeIntervalSinceReferenceDate];
-        
-        _statsTimer = [NSTimer scheduledTimerWithTimeInterval:(5 * 60.0f) repeats:YES block:^(NSTimer *timer) {
-            float dt = ([NSDate timeIntervalSinceReferenceDate] - _startTime) / 60.0f;
-            NSLog(@"%@: %d calls/min (total: %d; errors: %d)", self, (int)(((float) _requestCount) / dt), (int)_requestCount, (int)_errorCount);
-        }];
-    }
-    return self;
-}
 
 - (void)dealloc {
-    [_statsTimer invalidate];
-    _statsTimer = nil;
 }
-
-- (void)fetch: (NSURL*)url body: (NSData*)body callback: (void (^)(NSData*, NSError*))callback {
-    void (^handleResponse)(NSData*, NSURLResponse*, NSError*) = ^(NSData *data, NSURLResponse *response, NSError *error) {
-        if (error) {
-            _errorCount++;
-            NSDictionary *userInfo = @{@"error": error, @"url": url};
-            callback(nil, [NSError errorWithDomain:ProviderErrorDomain code:ProviderErrorServerUnknownError userInfo:userInfo]);
-            return;
-        }
-        
-        if (![response isKindOfClass:[NSHTTPURLResponse class]]) {
-            _errorCount++;
-            NSDictionary *userInfo = @{@"reason": @"response not NSHTTPURLResponse", @"url": url};
-            callback(nil, [NSError errorWithDomain:ProviderErrorDomain code:ProviderErrorBadResponse userInfo:userInfo]);
-            return;
-        }
-        
-        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse*)response;
-        if (httpResponse.statusCode != 200) {
-            _errorCount++;
-            NSDictionary *userInfo = @{@"statusCode": @(httpResponse.statusCode), @"url": url};
-            callback(nil, [NSError errorWithDomain:ProviderErrorDomain code:ProviderErrorBadResponse userInfo:userInfo]);
-            return;
-        }
-        
-        callback(data, nil);
-    };
-    
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^() {
-        _requestCount++;
-        
-        NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
-        [request setValue:[Provider userAgent] forHTTPHeaderField:@"User-Agent"];
-        
-        if (body) {
-            [request setHTTPMethod:@"POST"];
-            [request setValue:[NSString stringWithFormat:@"%d", (int)body.length] forHTTPHeaderField:@"Content-Length"];
-            [request setHTTPBody:body];
-        }
-        
-        NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
-        NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:handleResponse];
-        [task resume];
-    });
-    
-}
-
-- (id)promiseFetch:(NSURL *)url body:(NSData *)body fetchType:(ApiProviderFetchType)fetchType process:(NSObject *(^)(NSData*))process {
-    Class promiseClass = getPromiseClass(fetchType);
-    
-    return [(IPromise*)[promiseClass alloc] initWithSetup:^(IPromise *promise) {
-        [self fetch:url body:body callback:^(NSData *response, NSError *error) {
-            if (error) {
-                [promise reject:error];
-                return;
-            }
-            
-            NSObject *processed = process(response);
-
-            if (!processed) {
-                _errorCount++;
-                NSMutableDictionary *userInfo = [@{@"reason": @"processed value is nil", @"url": url} mutableCopy];
-                if (body) { [userInfo setObject:[[NSString alloc] initWithData:body encoding:NSUTF8StringEncoding] forKey:@"body"]; }
-                if (response) { [userInfo setObject:[[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding] forKey:@"response"]; }
-                [promise reject:[NSError errorWithDomain:ProviderErrorDomain code:ProviderErrorBadResponse userInfo:userInfo]];
-                return;
-            
-            } else if ([processed isKindOfClass:[NSError class]]) {
-                _errorCount++;
-                NSError *error = (NSError*)processed;
-                NSMutableDictionary *userInfo = [error.userInfo mutableCopy];
-                [userInfo setObject:url forKey:@"url"];
-                if (body) { [userInfo setObject:[[NSString alloc] initWithData:body encoding:NSUTF8StringEncoding] forKey:@"body"]; }
-                if (response) { [userInfo setObject:[[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding] forKey:@"response"]; }
-                [promise reject:[NSError errorWithDomain:error.domain code:error.code userInfo:userInfo]];
-                return;
-            }
-            
-            //NSLog(@"RESULT: %@", NSStringFromClass([processed class]));
-            
-            NSObject *result = nil;
-            if (![processed isEqual:[NSNull null]]) {
-                result = coerceValue(processed, fetchType);
-
-                if (!result) {
-                    _errorCount++;
-                    NSMutableDictionary *userInfo = [@{@"reason": @"coerced value is nil", @"url": url} mutableCopy];
-                    if (body) { [userInfo setObject:[[NSString alloc] initWithData:body encoding:NSUTF8StringEncoding] forKey:@"body"]; }
-                    if (response) { [userInfo setObject:[[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding] forKey:@"response"]; }
-                    [promise reject:[NSError errorWithDomain:ProviderErrorDomain code:ProviderErrorBadResponse userInfo:userInfo]];
-                    return;
-                }
-            }
-            
-            [promise resolve:result];
-        }];
-    }];
-}
-
-- (id)promiseFetchJSON: (NSURL*)url
-                  body: (NSData*)body
-             fetchType: (ApiProviderFetchType)fetchType
-               process: (NSObject* (^)(NSDictionary*))process {
-    
-    return [self promiseFetch:url body:body fetchType:fetchType process:^NSObject*(NSData *response) {
-        
-        NSError *jsonError = nil;
-        NSDictionary *result = [NSJSONSerialization JSONObjectWithData:response options:0 error:&jsonError];
-        
-        /*
-        if (fetchType == ApiProviderFetchTypeTransactionInfo) {
-            NSLog(@"%@",url.debugDescription);
-            NSLog(@"%@",result.debugDescription);
-        }
-        */
-        
-        if (jsonError) {
-            NSDictionary *userInfo = @{@"error": jsonError, @"reason": @"invalid JSON"};
-            return [NSError errorWithDomain:ProviderErrorDomain code:ProviderErrorBadResponse userInfo:userInfo];
-
-        } else if (!result) {
-            NSDictionary *userInfo = @{@"reason": @"missing result"};
-            return [NSError errorWithDomain:ProviderErrorDomain code:ProviderErrorBadResponse userInfo:userInfo];
-        }
-        /*
-        if (fetchType == ApiProviderFetchTypeTransactionReceipt)
-        {
-            NSLog(@"ApiProviderFetchTypeTransactionReceipt  promiseFetchJSON %@ ", result.debugDescription);
-        }
-        */
-        return process(result);
-    }];
-}
-
 
 @end

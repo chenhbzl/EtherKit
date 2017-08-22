@@ -201,6 +201,11 @@ static RegEx *MixedCaseAddressRegex = nil;
     return ZeroAddress;
 }
 
+- (NSString *)shortAddress {
+    NSString *hex = _checksumAddress;
+    return [NSString stringWithFormat:@"%@\u2026%@", [hex substringToIndex:9], [hex substringFromIndex:hex.length - 7]];
+}
+
 - (NSString*)icapAddress {
     return [Address normalizeAddress:_checksumAddress icap:YES];
 }

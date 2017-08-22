@@ -45,6 +45,7 @@
 + (instancetype)addressWithString: (NSString*)addressString;
 + (instancetype)addressWithData: (NSData*)addressData;
 
+@property (nonatomic, readonly) NSString *shortAddress;
 @property (nonatomic, readonly) NSString *checksumAddress;
 @property (nonatomic, readonly) NSString *icapAddress;
 @property (nonatomic, strong) NSString *proxyAddress;
@@ -52,6 +53,8 @@
 @property (nonatomic, readonly) NSString *proxyMNID;
 @property (nonatomic, strong) NSString *controllerAddress;
 @property (nonatomic, strong) NSString *recoveryKeyAddress;
+
+
 
 @property (nonatomic, readonly) NSData *data;
 

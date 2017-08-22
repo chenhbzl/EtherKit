@@ -31,7 +31,15 @@
  *  response.
  */
 
-#import "Provider.h"
+@import Foundation;
+
+#import "Transaction.h"
+#import "BigNumber.h"
+#import "BlockInfo.h"
+#import "Hash.h"
+#import "TransactionInfo.h"
+#import "TransactionReceipt.h"
+
 
 // @TODO: Refactor all thise to be more internal and use queryPath instead. Add (? option all allow nil)
 
@@ -67,7 +75,6 @@ typedef NS_OPTIONS(NSUInteger, ApiProviderFetchType) {
 };
 
 
-Class getPromiseClass(ApiProviderFetchType fetchType);
 id coerceValue(NSObject *value, ApiProviderFetchType fetchType);
 
 // queryPath(object, @"dictionary:someKey/array:0/integerHex")
@@ -75,18 +82,7 @@ id coerceValue(NSObject *value, ApiProviderFetchType fetchType);
 //                  bigNumberHex, bigNumberDecimal, data, hash, object
 id queryPath(NSObject *object, NSString *path);
 
-@interface ApiProvider : Provider
-
+@interface ApiProvider : NSObject
 @property (nonatomic, readonly) NSUInteger requestCount;
-
-- (id)promiseFetch: (NSURL*)url
-              body: (NSData*)body
-         fetchType: (ApiProviderFetchType)fetchType
-           process: (NSObject* (^)(NSData*))process;
-
-- (id)promiseFetchJSON: (NSURL*)url
-                  body: (NSData*)body
-             fetchType: (ApiProviderFetchType)fetchType
-               process: (NSObject* (^)(NSDictionary*))process;
 
 @end

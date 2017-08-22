@@ -9,12 +9,12 @@
 /* Begin PBXBuildFile section */
 		04AC5D241F472EB7006EF411 /* TransactionReceipt.h in Headers */ = {isa = PBXBuildFile; fileRef = 04AC5D221F472EB7006EF411 /* TransactionReceipt.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		04AC5D251F472EB7006EF411 /* TransactionReceipt.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AC5D231F472EB7006EF411 /* TransactionReceipt.m */; };
-		04EDC0B61F4462CC00784568 /* CareChainProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 04EDC0B41F4462CC00784568 /* CareChainProvider.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		04EDC0B71F4462CC00784568 /* CareChainProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EDC0B51F4462CC00784568 /* CareChainProvider.m */; };
+		04CD3AE11F4C877600A56ACB /* Payment.h in Headers */ = {isa = PBXBuildFile; fileRef = 04CD3ADF1F4C877600A56ACB /* Payment.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		04CD3AE21F4C877600A56ACB /* Payment.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CD3AE01F4C877600A56ACB /* Payment.m */; };
+		04CD3AE91F4C8A9900A56ACB /* ApiProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 04CD3AE71F4C8A9900A56ACB /* ApiProvider.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		04CD3AEA1F4C8A9900A56ACB /* ApiProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CD3AE81F4C8A9900A56ACB /* ApiProvider.m */; };
 		E2317E6D1E3191AC00DBE3E4 /* ethers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2317E631E3191AC00DBE3E4 /* ethers.framework */; };
 		E2317E741E3191AC00DBE3E4 /* ethers.h in Headers */ = {isa = PBXBuildFile; fileRef = E2317E661E3191AC00DBE3E4 /* ethers.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E2317E931E31970900DBE3E4 /* Payment.h in Headers */ = {isa = PBXBuildFile; fileRef = E2317E7D1E31970900DBE3E4 /* Payment.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E2317E941E31970900DBE3E4 /* Payment.m in Sources */ = {isa = PBXBuildFile; fileRef = E2317E7E1E31970900DBE3E4 /* Payment.m */; };
 		E2317E991E31970900DBE3E4 /* TransactionInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = E2317E831E31970900DBE3E4 /* TransactionInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E2317E9A1E31970900DBE3E4 /* TransactionInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = E2317E841E31970900DBE3E4 /* TransactionInfo.m */; };
 		E2317E9B1E31970900DBE3E4 /* Address.h in Headers */ = {isa = PBXBuildFile; fileRef = E2317E851E31970900DBE3E4 /* Address.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -27,29 +27,12 @@
 		E2317EA41E31970900DBE3E4 /* Transaction.m in Sources */ = {isa = PBXBuildFile; fileRef = E2317E8E1E31970900DBE3E4 /* Transaction.m */; };
 		E2317EA51E31970900DBE3E4 /* Account.h in Headers */ = {isa = PBXBuildFile; fileRef = E2317E8F1E31970900DBE3E4 /* Account.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E2317EA61E31970900DBE3E4 /* Account.m in Sources */ = {isa = PBXBuildFile; fileRef = E2317E901E31970900DBE3E4 /* Account.m */; };
-		E2317EB21E31981D00DBE3E4 /* Promise.h in Headers */ = {isa = PBXBuildFile; fileRef = E2317EAA1E31981D00DBE3E4 /* Promise.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E2317EB31E31981D00DBE3E4 /* Promise.m in Sources */ = {isa = PBXBuildFile; fileRef = E2317EAB1E31981D00DBE3E4 /* Promise.m */; };
 		E2317EB41E31981D00DBE3E4 /* RegEx.h in Headers */ = {isa = PBXBuildFile; fileRef = E2317EAC1E31981D00DBE3E4 /* RegEx.h */; };
 		E2317EB51E31981D00DBE3E4 /* RegEx.m in Sources */ = {isa = PBXBuildFile; fileRef = E2317EAD1E31981D00DBE3E4 /* RegEx.m */; };
 		E2317EB61E31981D00DBE3E4 /* RLPSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = E2317EAE1E31981D00DBE3E4 /* RLPSerialization.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E2317EB71E31981D00DBE3E4 /* RLPSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = E2317EAF1E31981D00DBE3E4 /* RLPSerialization.m */; };
 		E2317EB81E31981D00DBE3E4 /* BigNumber.h in Headers */ = {isa = PBXBuildFile; fileRef = E2317EB01E31981D00DBE3E4 /* BigNumber.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E2317EB91E31981D00DBE3E4 /* BigNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = E2317EB11E31981D00DBE3E4 /* BigNumber.m */; };
-		E2317EC41E31987F00DBE3E4 /* RoundRobinProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = E2317EBC1E31987F00DBE3E4 /* RoundRobinProvider.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E2317EC51E31987F00DBE3E4 /* RoundRobinProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = E2317EBD1E31987F00DBE3E4 /* RoundRobinProvider.m */; };
-		E2317EC61E31987F00DBE3E4 /* FallbackProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = E2317EBE1E31987F00DBE3E4 /* FallbackProvider.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E2317EC71E31987F00DBE3E4 /* FallbackProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = E2317EBF1E31987F00DBE3E4 /* FallbackProvider.m */; };
-		E2317EC81E31987F00DBE3E4 /* LightClientProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = E2317EC01E31987F00DBE3E4 /* LightClientProvider.h */; };
-		E2317ECA1E31987F00DBE3E4 /* Provider.h in Headers */ = {isa = PBXBuildFile; fileRef = E2317EC21E31987F00DBE3E4 /* Provider.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E2317ECB1E31987F00DBE3E4 /* Provider.m in Sources */ = {isa = PBXBuildFile; fileRef = E2317EC31E31987F00DBE3E4 /* Provider.m */; };
-		E2317ED61E31988900DBE3E4 /* InfuraProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = E2317ECC1E31988900DBE3E4 /* InfuraProvider.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E2317ED71E31988900DBE3E4 /* InfuraProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = E2317ECD1E31988900DBE3E4 /* InfuraProvider.m */; };
-		E2317ED81E31988900DBE3E4 /* JsonRpcProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = E2317ECE1E31988900DBE3E4 /* JsonRpcProvider.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E2317ED91E31988900DBE3E4 /* JsonRpcProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = E2317ECF1E31988900DBE3E4 /* JsonRpcProvider.m */; };
-		E2317EDA1E31988900DBE3E4 /* ApiProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = E2317ED01E31988900DBE3E4 /* ApiProvider.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E2317EDB1E31988900DBE3E4 /* ApiProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = E2317ED11E31988900DBE3E4 /* ApiProvider.m */; };
-		E2317EDE1E31988900DBE3E4 /* EtherscanProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = E2317ED41E31988900DBE3E4 /* EtherscanProvider.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E2317EDF1E31988900DBE3E4 /* EtherscanProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = E2317ED51E31988900DBE3E4 /* EtherscanProvider.m */; };
 		E2317F0A1E31994500DBE3E4 /* sha2.h in Headers */ = {isa = PBXBuildFile; fileRef = E2317EE51E31994500DBE3E4 /* sha2.h */; };
 		E2317F0B1E31994500DBE3E4 /* base58.c in Sources */ = {isa = PBXBuildFile; fileRef = E2317EE61E31994500DBE3E4 /* base58.c */; };
 		E2317F0C1E31994500DBE3E4 /* bip32.c in Sources */ = {isa = PBXBuildFile; fileRef = E2317EE71E31994500DBE3E4 /* bip32.c */; };
@@ -130,15 +113,15 @@
 /* Begin PBXFileReference section */
 		04AC5D221F472EB7006EF411 /* TransactionReceipt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TransactionReceipt.h; path = src/TransactionReceipt.h; sourceTree = "<group>"; };
 		04AC5D231F472EB7006EF411 /* TransactionReceipt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TransactionReceipt.m; path = src/TransactionReceipt.m; sourceTree = "<group>"; };
-		04EDC0B41F4462CC00784568 /* CareChainProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CareChainProvider.h; path = src/Providers/ApiProviders/CareChainProvider.h; sourceTree = "<group>"; };
-		04EDC0B51F4462CC00784568 /* CareChainProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CareChainProvider.m; path = src/Providers/ApiProviders/CareChainProvider.m; sourceTree = "<group>"; };
+		04CD3ADF1F4C877600A56ACB /* Payment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Payment.h; path = src/Payment.h; sourceTree = "<group>"; };
+		04CD3AE01F4C877600A56ACB /* Payment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Payment.m; path = src/Payment.m; sourceTree = "<group>"; };
+		04CD3AE71F4C8A9900A56ACB /* ApiProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ApiProvider.h; path = src/ApiProvider.h; sourceTree = "<group>"; };
+		04CD3AE81F4C8A9900A56ACB /* ApiProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ApiProvider.m; path = src/ApiProvider.m; sourceTree = "<group>"; };
 		E2317E631E3191AC00DBE3E4 /* ethers.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ethers.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2317E661E3191AC00DBE3E4 /* ethers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ethers.h; sourceTree = "<group>"; };
 		E2317E671E3191AC00DBE3E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E2317E6C1E3191AC00DBE3E4 /* ethersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ethersTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2317E731E3191AC00DBE3E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E2317E7D1E31970900DBE3E4 /* Payment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Payment.h; path = src/Payment.h; sourceTree = "<group>"; };
-		E2317E7E1E31970900DBE3E4 /* Payment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Payment.m; path = src/Payment.m; sourceTree = "<group>"; };
 		E2317E831E31970900DBE3E4 /* TransactionInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TransactionInfo.h; path = src/TransactionInfo.h; sourceTree = "<group>"; };
 		E2317E841E31970900DBE3E4 /* TransactionInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TransactionInfo.m; path = src/TransactionInfo.m; sourceTree = "<group>"; };
 		E2317E851E31970900DBE3E4 /* Address.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Address.h; path = src/Address.h; sourceTree = "<group>"; };
@@ -151,30 +134,12 @@
 		E2317E8E1E31970900DBE3E4 /* Transaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Transaction.m; path = src/Transaction.m; sourceTree = "<group>"; };
 		E2317E8F1E31970900DBE3E4 /* Account.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Account.h; path = src/Account.h; sourceTree = "<group>"; };
 		E2317E901E31970900DBE3E4 /* Account.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Account.m; path = src/Account.m; sourceTree = "<group>"; };
-		E2317EAA1E31981D00DBE3E4 /* Promise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Promise.h; path = src/Utilities/Promise.h; sourceTree = "<group>"; };
-		E2317EAB1E31981D00DBE3E4 /* Promise.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Promise.m; path = src/Utilities/Promise.m; sourceTree = "<group>"; };
 		E2317EAC1E31981D00DBE3E4 /* RegEx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegEx.h; path = src/Utilities/RegEx.h; sourceTree = "<group>"; };
 		E2317EAD1E31981D00DBE3E4 /* RegEx.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RegEx.m; path = src/Utilities/RegEx.m; sourceTree = "<group>"; };
 		E2317EAE1E31981D00DBE3E4 /* RLPSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RLPSerialization.h; path = src/Utilities/RLPSerialization.h; sourceTree = "<group>"; };
 		E2317EAF1E31981D00DBE3E4 /* RLPSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RLPSerialization.m; path = src/Utilities/RLPSerialization.m; sourceTree = "<group>"; };
 		E2317EB01E31981D00DBE3E4 /* BigNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BigNumber.h; path = src/Utilities/BigNumber.h; sourceTree = "<group>"; };
 		E2317EB11E31981D00DBE3E4 /* BigNumber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BigNumber.m; path = src/Utilities/BigNumber.m; sourceTree = "<group>"; };
-		E2317EBC1E31987F00DBE3E4 /* RoundRobinProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RoundRobinProvider.h; path = src/Providers/RoundRobinProvider.h; sourceTree = "<group>"; };
-		E2317EBD1E31987F00DBE3E4 /* RoundRobinProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RoundRobinProvider.m; path = src/Providers/RoundRobinProvider.m; sourceTree = "<group>"; };
-		E2317EBE1E31987F00DBE3E4 /* FallbackProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FallbackProvider.h; path = src/Providers/FallbackProvider.h; sourceTree = "<group>"; };
-		E2317EBF1E31987F00DBE3E4 /* FallbackProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FallbackProvider.m; path = src/Providers/FallbackProvider.m; sourceTree = "<group>"; };
-		E2317EC01E31987F00DBE3E4 /* LightClientProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LightClientProvider.h; path = src/Providers/LightClientProvider.h; sourceTree = "<group>"; };
-		E2317EC11E31987F00DBE3E4 /* LightClientProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LightClientProvider.m; path = src/Providers/LightClientProvider.m; sourceTree = "<group>"; };
-		E2317EC21E31987F00DBE3E4 /* Provider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Provider.h; path = src/Providers/Provider.h; sourceTree = "<group>"; };
-		E2317EC31E31987F00DBE3E4 /* Provider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Provider.m; path = src/Providers/Provider.m; sourceTree = "<group>"; };
-		E2317ECC1E31988900DBE3E4 /* InfuraProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InfuraProvider.h; path = src/Providers/ApiProviders/InfuraProvider.h; sourceTree = "<group>"; };
-		E2317ECD1E31988900DBE3E4 /* InfuraProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InfuraProvider.m; path = src/Providers/ApiProviders/InfuraProvider.m; sourceTree = "<group>"; };
-		E2317ECE1E31988900DBE3E4 /* JsonRpcProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JsonRpcProvider.h; path = src/Providers/ApiProviders/JsonRpcProvider.h; sourceTree = "<group>"; };
-		E2317ECF1E31988900DBE3E4 /* JsonRpcProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JsonRpcProvider.m; path = src/Providers/ApiProviders/JsonRpcProvider.m; sourceTree = "<group>"; };
-		E2317ED01E31988900DBE3E4 /* ApiProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ApiProvider.h; path = src/Providers/ApiProviders/ApiProvider.h; sourceTree = "<group>"; };
-		E2317ED11E31988900DBE3E4 /* ApiProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ApiProvider.m; path = src/Providers/ApiProviders/ApiProvider.m; sourceTree = "<group>"; };
-		E2317ED41E31988900DBE3E4 /* EtherscanProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EtherscanProvider.h; path = src/Providers/ApiProviders/EtherscanProvider.h; sourceTree = "<group>"; };
-		E2317ED51E31988900DBE3E4 /* EtherscanProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EtherscanProvider.m; path = src/Providers/ApiProviders/EtherscanProvider.m; sourceTree = "<group>"; };
 		E2317EE51E31994500DBE3E4 /* sha2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sha2.h; path = "ThirdParty/trezor-crypto/sha2.h"; sourceTree = "<group>"; };
 		E2317EE61E31994500DBE3E4 /* base58.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = base58.c; path = "ThirdParty/trezor-crypto/base58.c"; sourceTree = "<group>"; };
 		E2317EE71E31994500DBE3E4 /* bip32.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = bip32.c; path = "ThirdParty/trezor-crypto/bip32.c"; sourceTree = "<group>"; };
@@ -311,10 +276,10 @@
 		E2317EA91E31974F00DBE3E4 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				04CD3ADF1F4C877600A56ACB /* Payment.h */,
+				04CD3AE01F4C877600A56ACB /* Payment.m */,
 				E2317EB01E31981D00DBE3E4 /* BigNumber.h */,
 				E2317EB11E31981D00DBE3E4 /* BigNumber.m */,
-				E2317EAA1E31981D00DBE3E4 /* Promise.h */,
-				E2317EAB1E31981D00DBE3E4 /* Promise.m */,
 				E2317EAC1E31981D00DBE3E4 /* RegEx.h */,
 				E2317EAD1E31981D00DBE3E4 /* RegEx.m */,
 				E2317EAE1E31981D00DBE3E4 /* RLPSerialization.h */,
@@ -325,39 +290,6 @@
 				E2FA04811E42A0300013E5A7 /* Utilities.m */,
 			);
 			name = Utilities;
-			sourceTree = "<group>";
-		};
-		E2317EBA1E31982D00DBE3E4 /* Providers */ = {
-			isa = PBXGroup;
-			children = (
-				E2317EBB1E31985400DBE3E4 /* ApiProviders */,
-				E2317EBE1E31987F00DBE3E4 /* FallbackProvider.h */,
-				E2317EBF1E31987F00DBE3E4 /* FallbackProvider.m */,
-				E2317EC01E31987F00DBE3E4 /* LightClientProvider.h */,
-				E2317EC11E31987F00DBE3E4 /* LightClientProvider.m */,
-				E2317EC21E31987F00DBE3E4 /* Provider.h */,
-				E2317EC31E31987F00DBE3E4 /* Provider.m */,
-				E2317EBC1E31987F00DBE3E4 /* RoundRobinProvider.h */,
-				E2317EBD1E31987F00DBE3E4 /* RoundRobinProvider.m */,
-			);
-			name = Providers;
-			sourceTree = "<group>";
-		};
-		E2317EBB1E31985400DBE3E4 /* ApiProviders */ = {
-			isa = PBXGroup;
-			children = (
-				04EDC0B41F4462CC00784568 /* CareChainProvider.h */,
-				04EDC0B51F4462CC00784568 /* CareChainProvider.m */,
-				E2317ED01E31988900DBE3E4 /* ApiProvider.h */,
-				E2317ED11E31988900DBE3E4 /* ApiProvider.m */,
-				E2317ED41E31988900DBE3E4 /* EtherscanProvider.h */,
-				E2317ED51E31988900DBE3E4 /* EtherscanProvider.m */,
-				E2317ECC1E31988900DBE3E4 /* InfuraProvider.h */,
-				E2317ECD1E31988900DBE3E4 /* InfuraProvider.m */,
-				E2317ECE1E31988900DBE3E4 /* JsonRpcProvider.h */,
-				E2317ECF1E31988900DBE3E4 /* JsonRpcProvider.m */,
-			);
-			name = ApiProviders;
 			sourceTree = "<group>";
 		};
 		E2317EE01E3198D100DBE3E4 /* ThirdParty */ = {
@@ -461,11 +393,12 @@
 		E2D1A2B01E3C695A0015CAF8 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				04AC5D221F472EB7006EF411 /* TransactionReceipt.h */,
-				04AC5D231F472EB7006EF411 /* TransactionReceipt.m */,
-				E2317EBA1E31982D00DBE3E4 /* Providers */,
+				04CD3AE71F4C8A9900A56ACB /* ApiProvider.h */,
+				04CD3AE81F4C8A9900A56ACB /* ApiProvider.m */,
 				E2317EA91E31974F00DBE3E4 /* Utilities */,
 				E2317E8F1E31970900DBE3E4 /* Account.h */,
+				04AC5D221F472EB7006EF411 /* TransactionReceipt.h */,
+				04AC5D231F472EB7006EF411 /* TransactionReceipt.m */,
 				E2317E901E31970900DBE3E4 /* Account.m */,
 				E2317E851E31970900DBE3E4 /* Address.h */,
 				E2317E861E31970900DBE3E4 /* Address.m */,
@@ -473,8 +406,6 @@
 				E2317E881E31970900DBE3E4 /* BlockInfo.m */,
 				E2317E891E31970900DBE3E4 /* Hash.h */,
 				E2317E8A1E31970900DBE3E4 /* Hash.m */,
-				E2317E7D1E31970900DBE3E4 /* Payment.h */,
-				E2317E7E1E31970900DBE3E4 /* Payment.m */,
 				E2FA03D01E406FB30013E5A7 /* Signature.h */,
 				E2FA03D11E406FB30013E5A7 /* Signature.m */,
 				E2317E8D1E31970900DBE3E4 /* Transaction.h */,
@@ -495,30 +426,21 @@
 				E2317F1F1E31994500DBE3E4 /* bignum.h in Headers */,
 				04AC5D241F472EB7006EF411 /* TransactionReceipt.h in Headers */,
 				E2317E9F1E31970900DBE3E4 /* Hash.h in Headers */,
+				04CD3AE91F4C8A9900A56ACB /* ApiProvider.h in Headers */,
 				E2317EB61E31981D00DBE3E4 /* RLPSerialization.h in Headers */,
-				E2317ED61E31988900DBE3E4 /* InfuraProvider.h in Headers */,
 				E2317EA31E31970900DBE3E4 /* Transaction.h in Headers */,
-				E2317EDA1E31988900DBE3E4 /* ApiProvider.h in Headers */,
-				E2317EC61E31987F00DBE3E4 /* FallbackProvider.h in Headers */,
-				E2317EDE1E31988900DBE3E4 /* EtherscanProvider.h in Headers */,
 				E2317E991E31970900DBE3E4 /* TransactionInfo.h in Headers */,
 				E2317EB81E31981D00DBE3E4 /* BigNumber.h in Headers */,
-				E2317ED81E31988900DBE3E4 /* JsonRpcProvider.h in Headers */,
-				E2317EB21E31981D00DBE3E4 /* Promise.h in Headers */,
-				E2317EC41E31987F00DBE3E4 /* RoundRobinProvider.h in Headers */,
 				E2317E9B1E31970900DBE3E4 /* Address.h in Headers */,
-				E2317ECA1E31987F00DBE3E4 /* Provider.h in Headers */,
 				E2317EA51E31970900DBE3E4 /* Account.h in Headers */,
 				E2317E9D1E31970900DBE3E4 /* BlockInfo.h in Headers */,
 				E2FA03D21E406FB30013E5A7 /* Signature.h in Headers */,
 				E2FA04861E42A5660013E5A7 /* SecureData.h in Headers */,
-				E2317E931E31970900DBE3E4 /* Payment.h in Headers */,
 				E2FA04821E42A0300013E5A7 /* Utilities.h in Headers */,
 				E2317F261E31994500DBE3E4 /* macros.h in Headers */,
 				E2317F131E31994500DBE3E4 /* secp256k1.h in Headers */,
 				E2317F351E31999E00DBE3E4 /* tommath_private.h in Headers */,
 				E2317F171E31994500DBE3E4 /* options.h in Headers */,
-				04EDC0B61F4462CC00784568 /* CareChainProvider.h in Headers */,
 				E2317F2A1E31994500DBE3E4 /* ripemd160.h in Headers */,
 				E2317F361E31999E00DBE3E4 /* tommath_class.h in Headers */,
 				E2317F141E31994500DBE3E4 /* ecdsa.h in Headers */,
@@ -531,10 +453,10 @@
 				E2317EB41E31981D00DBE3E4 /* RegEx.h in Headers */,
 				E2317F1B1E31994500DBE3E4 /* aesopt.h in Headers */,
 				E2317F1E1E31994500DBE3E4 /* base58.h in Headers */,
-				E2317EC81E31987F00DBE3E4 /* LightClientProvider.h in Headers */,
 				E2317F251E31994500DBE3E4 /* hmac.h in Headers */,
 				E2317F381E31999E00DBE3E4 /* tommath_superclass.h in Headers */,
 				E2317F101E31994500DBE3E4 /* bip39.h in Headers */,
+				04CD3AE11F4C877600A56ACB /* Payment.h in Headers */,
 				E2317F531E3199BD00DBE3E4 /* sysendian.h in Headers */,
 				E2317F0A1E31994500DBE3E4 /* sha2.h in Headers */,
 				E2317F4F1E3199BD00DBE3E4 /* crypto_scrypt.h in Headers */,
@@ -652,8 +574,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E2FA03D31E406FB30013E5A7 /* Signature.m in Sources */,
-				04EDC0B71F4462CC00784568 /* CareChainProvider.m in Sources */,
-				E2317ECB1E31987F00DBE3E4 /* Provider.m in Sources */,
 				E2317F191E31994500DBE3E4 /* aescrypt.c in Sources */,
 				E2317EB51E31981D00DBE3E4 /* RegEx.m in Sources */,
 				E2317EB71E31981D00DBE3E4 /* RLPSerialization.m in Sources */,
@@ -662,31 +582,25 @@
 				E2FA04831E42A0300013E5A7 /* Utilities.m in Sources */,
 				E2317EA41E31970900DBE3E4 /* Transaction.m in Sources */,
 				E2317F521E3199BD00DBE3E4 /* scrypt_sha256.c in Sources */,
-				E2317ED91E31988900DBE3E4 /* JsonRpcProvider.m in Sources */,
 				E2317EA61E31970900DBE3E4 /* Account.m in Sources */,
 				E2317F121E31994500DBE3E4 /* ecdsa.c in Sources */,
-				E2317E941E31970900DBE3E4 /* Payment.m in Sources */,
 				E2317F2D1E31994500DBE3E4 /* sha3.c in Sources */,
 				E2317F1A1E31994500DBE3E4 /* aeskey.c in Sources */,
 				E2317F181E31994500DBE3E4 /* aes_modes.c in Sources */,
 				E2317EB91E31981D00DBE3E4 /* BigNumber.m in Sources */,
 				E2317F271E31994500DBE3E4 /* pbkdf2.c in Sources */,
-				E2317EB31E31981D00DBE3E4 /* Promise.m in Sources */,
-				E2317EDB1E31988900DBE3E4 /* ApiProvider.m in Sources */,
+				04CD3AE21F4C877600A56ACB /* Payment.m in Sources */,
 				E2317F341E31999E00DBE3E4 /* mpi.c in Sources */,
 				E2317F2C1E31994500DBE3E4 /* sha2.c in Sources */,
 				E2317EA01E31970900DBE3E4 /* Hash.m in Sources */,
-				E2317EC51E31987F00DBE3E4 /* RoundRobinProvider.m in Sources */,
 				E2317F221E31994500DBE3E4 /* curves.c in Sources */,
-				E2317EC71E31987F00DBE3E4 /* FallbackProvider.m in Sources */,
 				E2317F1C1E31994500DBE3E4 /* aestab.c in Sources */,
 				E2317F111E31994500DBE3E4 /* secp256k1.c in Sources */,
-				E2317EDF1E31988900DBE3E4 /* EtherscanProvider.m in Sources */,
-				E2317ED71E31988900DBE3E4 /* InfuraProvider.m in Sources */,
 				E2317F0C1E31994500DBE3E4 /* bip32.c in Sources */,
 				E2317F4E1E3199BD00DBE3E4 /* crypto_scrypt-nosse.c in Sources */,
 				E2317E9A1E31970900DBE3E4 /* TransactionInfo.m in Sources */,
 				E2317F0B1E31994500DBE3E4 /* base58.c in Sources */,
+				04CD3AEA1F4C8A9900A56ACB /* ApiProvider.m in Sources */,
 				E2317F0F1E31994500DBE3E4 /* bip39.c in Sources */,
 				E2317F241E31994500DBE3E4 /* hmac.c in Sources */,
 				E2317F0E1E31994500DBE3E4 /* bignum.c in Sources */,

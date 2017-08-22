@@ -18,24 +18,12 @@ FOUNDATION_EXPORT const unsigned char ethersVersionString[];
 #import <ethers/Address.h>
 #import <ethers/BlockInfo.h>
 #import <ethers/Hash.h>
-#import <ethers/Payment.h>
 #import <ethers/Signature.h>
 #import <ethers/Transaction.h>
 #import <ethers/TransactionInfo.h>
 #import <ethers/TransactionReceipt.h>
-
-#import <ethers/ApiProvider.h>
-#import <ethers/CareChainProvider.h>
-#import <ethers/EtherscanProvider.h>
-#import <ethers/InfuraProvider.h>
-#import <ethers/JsonRpcProvider.h>
-
-#import <ethers/FallbackProvider.h>
-//#import <ethers/LightClientProvider.h>
-#import <ethers/Provider.h>
-#import <ethers/RoundRobinProvider.h>
-
 #import <ethers/BigNumber.h>
-#import <ethers/Promise.h>
 #import <ethers/RLPSerialization.h>
 #import <ethers/SecureData.h>
+#import <ethers/ApiProvider.h>
+#import <ethers/Payment.h>

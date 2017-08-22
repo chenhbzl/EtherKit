@@ -219,7 +219,7 @@ static NSData *NullData = nil;
     if (account) {
         NSMutableArray *raw = [self _packBasic];
         
-        //NSLog(@"%u %@",_chainId,dataWithByte(_chainId));
+        NSLog(@"Transaction sign %u %@",_chainId,dataWithByte(_chainId));
         
         if (_chainId) {
             [raw addObject:dataWithByte(_chainId)];
