@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "D38E2BFA04524DAF8EC60C7E789E7D242306BFD5",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "D38E2BFA04524DAF8EC60C7E789E7D242306BFD5" : 9223372036854775807,
+    "0B52CDF3A0EDE26CCFCCF3ECC8AFEA25B04B319E" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "468B894A-5C4A-46D6-B5AF-5368C3B3FE27",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "D38E2BFA04524DAF8EC60C7E789E7D242306BFD5" : "ethers.objc\/",
+    "0B52CDF3A0EDE26CCFCCF3ECC8AFEA25B04B319E" : ""
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "ethers",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "ethers.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:advatar\/hack.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "0B52CDF3A0EDE26CCFCCF3ECC8AFEA25B04B319E"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:provivus\/ethers.objc.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "D38E2BFA04524DAF8EC60C7E789E7D242306BFD5"
+    }
+  ]
+}
