@@ -154,7 +154,11 @@ static RegEx *RegExHex = nil;
 + (instancetype)secureDataWithHexString:(NSString*)hexString {
     
     // Make sure we are a valid hex string
-    if (![RegExHex matchesExactly:hexString]) { return nil; }
+    if (![RegExHex matchesExactly:hexString]) {
+        
+        NSLog(@" RegExHex fail for %@",hexString);
+        
+    return nil; }
     
     SecureData *secureData = [SecureData secureDataWithCapacity:hexString.length / 2 - 1];
 

@@ -74,6 +74,16 @@
     return self;
 }
 
+- (unsigned char *)getBytes {
+    NSData* vData = [NSData dataWithBytes:&_v length:1];
+
+    NSMutableData *data = [vData mutableCopy];
+    [data appendData:_r];
+    [data appendData:_s];
+        
+    return (unsigned char*)data.bytes;
+}
+
 
 #pragma mark - NSObject
 

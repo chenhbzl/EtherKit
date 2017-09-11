@@ -42,6 +42,7 @@
  *   - extraData          (string)                             *
  *   - gasLimit           (decimal string)                     *
  *   - gasUsed            (decimal string)                     *
+ *   - transactions       (array [hashes] or [transactionInfo])                     *
  */
 + (instancetype)blockInfoFromDictionary: (NSDictionary*)info;
 - (NSDictionary*)dictionaryRepresentation;
@@ -67,6 +68,8 @@
 
 @property (nonatomic, readonly) BigNumber *gasLimit;
 @property (nonatomic, readonly) BigNumber *gasUsed;
+
+@property (nonatomic, readonly) NSArray *transactions;
 
 /*
 @property (nonatomic, readonly) Hash *sha3Uncles;

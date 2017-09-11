@@ -19,3 +19,4 @@ NSData *convertIntegerToData(NSUInteger value) {
     
     return [NSData dataWithBytes:&bytes[offset] length:(sizeof(bytes) - offset)];
 }
+

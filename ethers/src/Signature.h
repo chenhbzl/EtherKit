@@ -31,4 +31,7 @@
 @property (nonatomic, readonly) NSData* s;
 @property (nonatomic, readonly) char v;
 
+- (unsigned char *)getBytes;
+
+
 @end

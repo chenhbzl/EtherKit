@@ -70,7 +70,8 @@
 #pragma mark -
 #pragma mark - Account
 
-@interface Account : NSObject
+
+@interface Account : NSObject  
 
 + (instancetype)accountWithPrivateKey: (NSData*)privateKey;
 
@@ -91,10 +92,17 @@
 //+ (instancetype)decryptCrowdsaleJSON: (NSString*)json password: (NSString*)password;
 
 
++ (NSArray *)mnemonicWords;
+
 @property (nonatomic, readonly) Address *address;
+@property (nonatomic, readonly) Address *recoveryAddress; // currently == address
+
+
+@property (nonatomic, strong) Address *proxyAddress;
+@property (nonatomic, strong) Address *controllerAddress;
 
 @property (nonatomic, readonly) NSString *mnemonicPhrase;
-@property (nonatomic, readonly) NSData *mnemonicData;
+@property (nonatomic, readonly) NSData   *mnemonicData;
 
 - (Signature*)signDigest: (NSData*)digestData;
 - (void)sign: (Transaction*)transaction;

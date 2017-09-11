@@ -43,8 +43,6 @@ static NSData *NullData = nil;
     self = [super init];
     if (self) {
         
-        NSLog(@"TransactionReceipt %@",info.debugDescription);
-        
         _transHash = queryPath(info, @"dictionary:transactionHash/hash");
         // _transactionHash = queryPath(info, @"dictionary:transactionHash/hash");
         if (!_transHash) {

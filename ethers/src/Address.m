@@ -78,6 +78,8 @@ static RegEx *HexAddressRegex = nil;
 static RegEx *IcapAddressRegex = nil;
 static RegEx *MixedCaseAddressRegex = nil;
 
+@synthesize publicKey = _publicKey;
+
 + (void)initialize {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -122,7 +124,6 @@ static RegEx *MixedCaseAddressRegex = nil;
     
     return [NSString stringWithCString:(const char*)bytes encoding:NSASCIIStringEncoding];
 }
-
 
 + (NSString*)normalizeAddress:(NSString *)address {
     return [self normalizeAddress:address icap:NO];
@@ -176,7 +177,6 @@ static RegEx *MixedCaseAddressRegex = nil;
     return result;;
 }
 
-
 #pragma mark - Life-Cycle
 
 - (instancetype)initWithString: (NSString*)addressString {
@@ -201,6 +201,16 @@ static RegEx *MixedCaseAddressRegex = nil;
     return ZeroAddress;
 }
 
+- (void) setPublicKey:(NSString*)pkey
+{
+    _publicKey = pkey;
+}
+
+- (NSString *)publicKey
+{
+    return _publicKey;
+}
+
 - (NSString *)shortAddress {
     NSString *hex = _checksumAddress;
     return [NSString stringWithFormat:@"%@\u2026%@", [hex substringToIndex:9], [hex substringFromIndex:hex.length - 7]];
@@ -208,26 +218,6 @@ static RegEx *MixedCaseAddressRegex = nil;
 
 - (NSString*)icapAddress {
     return [Address normalizeAddress:_checksumAddress icap:YES];
-}
-
-
-- (NSString*)proxyIcapAddress {
-    return [Address normalizeAddress:_proxyAddress icap:YES];
-}
-
-- (void)setProxyAddress:(NSString *)proxyAddress
-{
-    _proxyAddress = proxyAddress;
-}
-
-- (void)setControllerAddress:(NSString *)controllerAddress
-{
-    _controllerAddress = controllerAddress;
-}
-
-- (void)setRecoveryKeyAddress:(NSString *)recoveryKeyAddress
-{
-    _recoveryKeyAddress = recoveryKeyAddress;
 }
 
 - (BOOL)isZeroAddress {
@@ -238,13 +228,11 @@ static RegEx *MixedCaseAddressRegex = nil;
     return [SecureData hexStringToData:_checksumAddress];
 }
 
-
 #pragma mark - NSCopying
 
 - (instancetype)copyWithZone:(NSZone *)zone {
     return self;
 }
-
 
 #pragma mark - NSCoding
 
@@ -256,7 +244,6 @@ static RegEx *MixedCaseAddressRegex = nil;
 - (void)encodeWithCoder:(NSCoder *)aCoder {
     [aCoder encodeObject:_checksumAddress forKey:@"address"];
 }
-
 
 #pragma mark - NSObject
 

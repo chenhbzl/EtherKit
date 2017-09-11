@@ -40,7 +40,10 @@ static NSData *NullData = nil;
 
 - (instancetype)initWithDictionary: (NSDictionary*)info {
     self = [super init];
-    if (self) {        
+    if (self) {
+        
+        //NSLog(@"BlockInfo %@",info.debugDescription);
+        
         _blockHash = queryPath(info, @"dictionary:hash/hash");
         if (!_blockHash) {
             NSLog(@"ERROR: Missing hash");
@@ -88,6 +91,14 @@ static NSData *NullData = nil;
             NSLog(@"ERROR: Missing gasUsed");
             return nil;
         }
+        
+        _transactions = queryPath(info, @"dictionary:transactions/array");
+        if (!_transactions) {
+            NSLog(@"ERROR: Missing transactions");
+            return nil;
+        }
+        
+        
     }
     return self;
 }
@@ -154,9 +165,9 @@ static NSData *NullData = nil;
 }
 
 - (NSString*)description {
-    return [NSString stringWithFormat:@"<BlockInfo hash=%@ blockNumber=%ld parentHash=%@ timestamp=%@ nonce=%ld extraData=%@  gasLimit=%@ gasUsed=%@>",
+    return [NSString stringWithFormat:@"<BlockInfo hash=%@ blockNumber=%ld parentHash=%@ timestamp=%@ nonce=%ld extraData=%@  gasLimit=%@ gasUsed=%@ transactions=%@>",
             [_blockHash hexString], (unsigned long)_blockNumber, [_parentHash hexString], [NSDate dateWithTimeIntervalSince1970:_timestamp],
-            (unsigned long)_nonce, _extraData, [_gasLimit decimalString], [_gasUsed decimalString]];
+            (unsigned long)_nonce, _extraData, [_gasLimit decimalString], [_gasUsed decimalString], _transactions.description];
 }
 
 

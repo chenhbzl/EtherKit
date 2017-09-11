@@ -9,3 +9,7 @@
 #import <Foundation/Foundation.h>
 
 extern NSData* convertIntegerToData(NSUInteger value);
+// queryPath(object, @"dictionary:someKey/array:0/integerHex")
+// Supported types: dictionary:, array:, string, integerHex, integerDecimal, float
+//                  bigNumberHex, bigNumberDecimal, data, hash, object
+id queryPath(NSObject *object, NSString *path);

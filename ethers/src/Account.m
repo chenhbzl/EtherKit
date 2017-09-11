@@ -147,6 +147,7 @@ static NSDateFormatter *TimeFormatter = nil;
             const char *word = wordlist[i++];
             if (!word) { break; }
             [Wordlist addObject:[NSString stringWithUTF8String:word]];
+            
         }
         
         DateFormatter = [[NSDateFormatter alloc] init];
@@ -168,10 +169,20 @@ static NSDateFormatter *TimeFormatter = nil;
         
         SecureData *publicKey = [SecureData secureDataWithLength:65];
         ecdsa_get_public_key65(&secp256k1, _privateKey.bytes, publicKey.mutableBytes);
+        
         NSData *addressData = [[[publicKey subdataFromIndex:1] KECCAK256] subdataFromIndex:12].data;
         _address = [Address addressWithData:addressData];
+        _address.publicKey = publicKey.hexString;
+        _recoveryAddress = _address;
+        
     }
     return self;
+}
+
++ (NSArray *)mnemonicWords
+{
+    NSSortDescriptor *descriptor = [[NSSortDescriptor alloc] initWithKey:@"" ascending:true];
+    return [Wordlist sortedArrayUsingDescriptors:@[descriptor] ];
 }
 
 - (instancetype)initWithMnemonicPhrase: (NSString*)mnemonicPhrase {
@@ -249,7 +260,6 @@ static NSDateFormatter *TimeFormatter = nil;
 + (instancetype)decryptCrowdsaleJSON: (NSString*)json password: (NSString*)password {
     return nil;
 }
-
 
 #pragma mark - Secret Storage
 
@@ -600,6 +610,7 @@ static NSDateFormatter *TimeFormatter = nil;
 }
 
 #pragma mark - Signing
+
 
 - (Signature*)signDigest:(NSData *)digestData {
     if (digestData.length != 32) { return nil; }
