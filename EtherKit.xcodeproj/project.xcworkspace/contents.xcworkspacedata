@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:ethers.xcodeproj">
+      location = "self:/Users/joohan/provivus/mvn/ethers.objc/EtherKit.xcodeproj">
    </FileRef>
 </Workspace>
