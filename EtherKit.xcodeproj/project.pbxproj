@@ -12,7 +12,6 @@
 		0450B1651F681BB9002A7D80 /* EtherKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 0450B1571F681BB9002A7D80 /* EtherKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0450B16E1F681CA0002A7D80 /* src in Resources */ = {isa = PBXBuildFile; fileRef = 0450B16C1F681CA0002A7D80 /* src */; };
 		0450B16F1F681CA0002A7D80 /* ThirdParty in Resources */ = {isa = PBXBuildFile; fileRef = 0450B16D1F681CA0002A7D80 /* ThirdParty */; };
-		E2317E6D1E3191AC00DBE3E4 /* ethers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2317E631E3191AC00DBE3E4 /* ethers.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -22,13 +21,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 0450B1541F681BB8002A7D80;
 			remoteInfo = EtherKit;
-		};
-		E2317E6E1E3191AC00DBE3E4 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E2317E5A1E3191AC00DBE3E4 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = E2317E621E3191AC00DBE3E4;
-			remoteInfo = ethers;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -41,8 +33,6 @@
 		0450B1641F681BB9002A7D80 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0450B16C1F681CA0002A7D80 /* src */ = {isa = PBXFileReference; lastKnownFileType = folder; path = src; sourceTree = "<group>"; };
 		0450B16D1F681CA0002A7D80 /* ThirdParty */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ThirdParty; sourceTree = "<group>"; };
-		E2317E631E3191AC00DBE3E4 /* ethers.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ethers.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E2317E6C1E3191AC00DBE3E4 /* ethersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ethersTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,21 +48,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0450B15E1F681BB9002A7D80 /* EtherKit.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E2317E5F1E3191AC00DBE3E4 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E2317E691E3191AC00DBE3E4 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E2317E6D1E3191AC00DBE3E4 /* ethers.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,8 +86,6 @@
 		E2317E641E3191AC00DBE3E4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E2317E631E3191AC00DBE3E4 /* ethers.framework */,
-				E2317E6C1E3191AC00DBE3E4 /* ethersTests.xctest */,
 				0450B1551F681BB8002A7D80 /* EtherKit.framework */,
 				0450B15D1F681BB9002A7D80 /* EtherKitTests.xctest */,
 			);
@@ -127,13 +100,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0450B1651F681BB9002A7D80 /* EtherKit.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E2317E601E3191AC00DBE3E4 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -176,42 +142,6 @@
 			productReference = 0450B15D1F681BB9002A7D80 /* EtherKitTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		E2317E621E3191AC00DBE3E4 /* ethers */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = E2317E771E3191AC00DBE3E4 /* Build configuration list for PBXNativeTarget "ethers" */;
-			buildPhases = (
-				E2317E5E1E3191AC00DBE3E4 /* Sources */,
-				E2317E5F1E3191AC00DBE3E4 /* Frameworks */,
-				E2317E601E3191AC00DBE3E4 /* Headers */,
-				E2317E611E3191AC00DBE3E4 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = ethers;
-			productName = ethers;
-			productReference = E2317E631E3191AC00DBE3E4 /* ethers.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		E2317E6B1E3191AC00DBE3E4 /* ethersTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = E2317E7A1E3191AC00DBE3E4 /* Build configuration list for PBXNativeTarget "ethersTests" */;
-			buildPhases = (
-				E2317E681E3191AC00DBE3E4 /* Sources */,
-				E2317E691E3191AC00DBE3E4 /* Frameworks */,
-				E2317E6A1E3191AC00DBE3E4 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				E2317E6F1E3191AC00DBE3E4 /* PBXTargetDependency */,
-			);
-			name = ethersTests;
-			productName = ethersTests;
-			productReference = E2317E6C1E3191AC00DBE3E4 /* ethersTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -232,16 +162,6 @@
 						DevelopmentTeam = BH7Z7SE66T;
 						ProvisioningStyle = Automatic;
 					};
-					E2317E621E3191AC00DBE3E4 = {
-						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = BH7Z7SE66T;
-						ProvisioningStyle = Automatic;
-					};
-					E2317E6B1E3191AC00DBE3E4 = {
-						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 62EN37SSUJ;
-						ProvisioningStyle = Automatic;
-					};
 				};
 			};
 			buildConfigurationList = E2317E5D1E3191AC00DBE3E4 /* Build configuration list for PBXProject "EtherKit" */;
@@ -256,8 +176,6 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				E2317E621E3191AC00DBE3E4 /* ethers */,
-				E2317E6B1E3191AC00DBE3E4 /* ethersTests */,
 				0450B1541F681BB8002A7D80 /* EtherKit */,
 				0450B15C1F681BB9002A7D80 /* EtherKitTests */,
 			);
@@ -275,20 +193,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		0450B15B1F681BB9002A7D80 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E2317E611E3191AC00DBE3E4 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E2317E6A1E3191AC00DBE3E4 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -313,20 +217,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E2317E5E1E3191AC00DBE3E4 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E2317E681E3191AC00DBE3E4 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -334,11 +224,6 @@
 			isa = PBXTargetDependency;
 			target = 0450B1541F681BB8002A7D80 /* EtherKit */;
 			targetProxy = 0450B15F1F681BB9002A7D80 /* PBXContainerItemProxy */;
-		};
-		E2317E6F1E3191AC00DBE3E4 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = E2317E621E3191AC00DBE3E4 /* ethers */;
-			targetProxy = E2317E6E1E3191AC00DBE3E4 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -515,72 +400,6 @@
 			};
 			name = Release;
 		};
-		E2317E781E3191AC00DBE3E4 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				DEAD_CODE_STRIPPING = YES;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = BH7Z7SE66T;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = ethers/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = io.ethers.ethers;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		E2317E791E3191AC00DBE3E4 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				DEAD_CODE_STRIPPING = YES;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = BH7Z7SE66T;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = ethers/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = io.ethers.ethers;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
-		E2317E7B1E3191AC00DBE3E4 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DEVELOPMENT_TEAM = 62EN37SSUJ;
-				INFOPLIST_FILE = ethersTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = io.ethers.ethersTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		E2317E7C1E3191AC00DBE3E4 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DEVELOPMENT_TEAM = 62EN37SSUJ;
-				INFOPLIST_FILE = ethersTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = io.ethers.ethersTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -607,24 +426,6 @@
 			buildConfigurations = (
 				E2317E751E3191AC00DBE3E4 /* Debug */,
 				E2317E761E3191AC00DBE3E4 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		E2317E771E3191AC00DBE3E4 /* Build configuration list for PBXNativeTarget "ethers" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				E2317E781E3191AC00DBE3E4 /* Debug */,
-				E2317E791E3191AC00DBE3E4 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		E2317E7A1E3191AC00DBE3E4 /* Build configuration list for PBXNativeTarget "ethersTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				E2317E7B1E3191AC00DBE3E4 /* Debug */,
-				E2317E7C1E3191AC00DBE3E4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
