@@ -90,6 +90,7 @@
 		0450B2201F68208A002A7D80 /* sha2.h in Headers */ = {isa = PBXBuildFile; fileRef = 0450B1FB1F68208A002A7D80 /* sha2.h */; };
 		0450B2211F68208A002A7D80 /* sha3.c in Sources */ = {isa = PBXBuildFile; fileRef = 0450B1FC1F68208A002A7D80 /* sha3.c */; };
 		0450B2221F68208A002A7D80 /* sha3.h in Headers */ = {isa = PBXBuildFile; fileRef = 0450B1FD1F68208A002A7D80 /* sha3.h */; };
+		0450B2351F683387002A7D80 /* dummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0450B2341F683387002A7D80 /* dummy.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -189,6 +190,7 @@
 		0450B1FB1F68208A002A7D80 /* sha2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sha2.h; path = "xThirdParty/trezor-crypto/sha2.h"; sourceTree = "<group>"; };
 		0450B1FC1F68208A002A7D80 /* sha3.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = sha3.c; path = "xThirdParty/trezor-crypto/sha3.c"; sourceTree = "<group>"; };
 		0450B1FD1F68208A002A7D80 /* sha3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sha3.h; path = "xThirdParty/trezor-crypto/sha3.h"; sourceTree = "<group>"; };
+		0450B2341F683387002A7D80 /* dummy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = dummy.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -217,6 +219,7 @@
 				0450B1701F681F59002A7D80 /* src */,
 				0450B1571F681BB9002A7D80 /* EtherKit.h */,
 				0450B1581F681BB9002A7D80 /* Info.plist */,
+				0450B2341F683387002A7D80 /* dummy.swift */,
 			);
 			path = EtherKit;
 			sourceTree = "<group>";
@@ -488,6 +491,7 @@
 					0450B1541F681BB8002A7D80 = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = BH7Z7SE66T;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
 					0450B15C1F681BB9002A7D80 = {
@@ -545,6 +549,7 @@
 				0450B2011F68208A002A7D80 /* aeskey.c in Sources */,
 				0450B1AB1F681F85002A7D80 /* RegEx.m in Sources */,
 				0450B1B11F681F85002A7D80 /* Utilities.m in Sources */,
+				0450B2351F683387002A7D80 /* dummy.swift in Sources */,
 				0450B21F1F68208A002A7D80 /* sha2.c in Sources */,
 				0450B18E1F681F68002A7D80 /* Hash.m in Sources */,
 				0450B18A1F681F68002A7D80 /* ApiProvider.m in Sources */,
@@ -600,6 +605,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = BH7Z7SE66T;
@@ -623,6 +629,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = BH7Z7SE66T;
@@ -644,6 +651,7 @@
 		0450B1681F681BB9002A7D80 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				DEVELOPMENT_TEAM = BH7Z7SE66T;
 				INFOPLIST_FILE = EtherKitTests/Info.plist;
@@ -660,6 +668,7 @@
 		0450B1691F681BB9002A7D80 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				DEVELOPMENT_TEAM = BH7Z7SE66T;
 				INFOPLIST_FILE = EtherKitTests/Info.plist;
