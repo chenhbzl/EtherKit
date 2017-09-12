@@ -28,7 +28,7 @@
 		0450B1941F681F68002A7D80 /* Transaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 0450B1801F681F68002A7D80 /* Transaction.m */; };
 		0450B1951F681F68002A7D80 /* TransactionInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 0450B1811F681F68002A7D80 /* TransactionInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0450B1961F681F68002A7D80 /* TransactionInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0450B1821F681F68002A7D80 /* TransactionInfo.m */; };
-		0450B1971F681F68002A7D80 /* TransactionReceipt.h in Headers */ = {isa = PBXBuildFile; fileRef = 0450B1831F681F68002A7D80 /* TransactionReceipt.h */; };
+		0450B1971F681F68002A7D80 /* TransactionReceipt.h in Headers */ = {isa = PBXBuildFile; fileRef = 0450B1831F681F68002A7D80 /* TransactionReceipt.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0450B1981F681F68002A7D80 /* TransactionReceipt.m in Sources */ = {isa = PBXBuildFile; fileRef = 0450B1841F681F68002A7D80 /* TransactionReceipt.m */; };
 		0450B1A61F681F85002A7D80 /* BigNumber.h in Headers */ = {isa = PBXBuildFile; fileRef = 0450B19A1F681F85002A7D80 /* BigNumber.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0450B1A71F681F85002A7D80 /* BigNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = 0450B19B1F681F85002A7D80 /* BigNumber.m */; };
