@@ -80,7 +80,6 @@
 		E2317F521E3199BD00DBE3E4 /* scrypt_sha256.c in Sources */ = {isa = PBXBuildFile; fileRef = E2317F4B1E3199BD00DBE3E4 /* scrypt_sha256.c */; };
 		E2317F531E3199BD00DBE3E4 /* sysendian.h in Headers */ = {isa = PBXBuildFile; fileRef = E2317F4C1E3199BD00DBE3E4 /* sysendian.h */; };
 		E2317F541E3199BD00DBE3E4 /* scrypt_sha256.h in Headers */ = {isa = PBXBuildFile; fileRef = E2317F4D1E3199BD00DBE3E4 /* scrypt_sha256.h */; };
-		E2317F5C1E31A07700DBE3E4 /* test-providers.m in Sources */ = {isa = PBXBuildFile; fileRef = E2317F551E31A07700DBE3E4 /* test-providers.m */; };
 		E2317F5D1E31A07700DBE3E4 /* test-accounts.m in Sources */ = {isa = PBXBuildFile; fileRef = E2317F561E31A07700DBE3E4 /* test-accounts.m */; };
 		E2317F5E1E31A07700DBE3E4 /* test-rlpcoder.m in Sources */ = {isa = PBXBuildFile; fileRef = E2317F571E31A07700DBE3E4 /* test-rlpcoder.m */; };
 		E2317F5F1E31A07700DBE3E4 /* test-ether-format.m in Sources */ = {isa = PBXBuildFile; fileRef = E2317F581E31A07700DBE3E4 /* test-ether-format.m */; };
@@ -188,7 +187,6 @@
 		E2317F4B1E3199BD00DBE3E4 /* scrypt_sha256.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = scrypt_sha256.c; path = "ThirdParty/scrypt-1.1.6/scrypt_sha256.c"; sourceTree = "<group>"; };
 		E2317F4C1E3199BD00DBE3E4 /* sysendian.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sysendian.h; path = "ThirdParty/scrypt-1.1.6/sysendian.h"; sourceTree = "<group>"; };
 		E2317F4D1E3199BD00DBE3E4 /* scrypt_sha256.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = scrypt_sha256.h; path = "ThirdParty/scrypt-1.1.6/scrypt_sha256.h"; sourceTree = "<group>"; };
-		E2317F551E31A07700DBE3E4 /* test-providers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "test-providers.m"; sourceTree = "<group>"; };
 		E2317F561E31A07700DBE3E4 /* test-accounts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "test-accounts.m"; sourceTree = "<group>"; };
 		E2317F571E31A07700DBE3E4 /* test-rlpcoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "test-rlpcoder.m"; sourceTree = "<group>"; };
 		E2317F581E31A07700DBE3E4 /* test-ether-format.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "test-ether-format.m"; sourceTree = "<group>"; };
@@ -265,7 +263,6 @@
 				E2FA03D61E4096560013E5A7 /* test-entropy.m */,
 				E2317F581E31A07700DBE3E4 /* test-ether-format.m */,
 				E2317F591E31A07700DBE3E4 /* test-mnemonic-wallet.m */,
-				E2317F551E31A07700DBE3E4 /* test-providers.m */,
 				E2317F571E31A07700DBE3E4 /* test-rlpcoder.m */,
 				E2317F5A1E31A07700DBE3E4 /* test-thirdparty.m */,
 				E2317F5B1E31A07700DBE3E4 /* test-transactions.m */,
@@ -616,7 +613,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E2317F601E31A07700DBE3E4 /* test-mnemonic-wallet.m in Sources */,
-				E2317F5C1E31A07700DBE3E4 /* test-providers.m in Sources */,
 				E2317F5E1E31A07700DBE3E4 /* test-rlpcoder.m in Sources */,
 				E2317F621E31A07700DBE3E4 /* test-transactions.m in Sources */,
 				E2317F5D1E31A07700DBE3E4 /* test-accounts.m in Sources */,
