@@ -35,7 +35,6 @@
 #include "secp256k1.h"
 
 #import "BigNumber.h"
-#import "SecureData.h"
 
 static NSErrorDomain ErrorDomain = @"us.proviv.AccountError";
 
@@ -248,6 +247,9 @@ static NSDateFormatter *TimeFormatter = nil;
     return [[_privateKey KECCAK256] hexString];
 }
 
+- (SecureData*)privateKey {
+    return _privateKey;
+}
 
 #pragma mark - Crowdsale
 
