@@ -162,6 +162,9 @@ static NSDateFormatter *TimeFormatter = nil;
 - (instancetype)initWithPrivateKey:(NSData *)privateKey {
     if (privateKey.length != 32) { return nil; }
 
+    NSString *privateString = [[NSString alloc] initWithData:privateKey encoding:NSUTF8StringEncoding];
+    NSLog(@"privateString %@",privateString);
+    
     self = [super init];
     if (self) {
         _privateKey = [SecureData secureDataWithData:privateKey];
