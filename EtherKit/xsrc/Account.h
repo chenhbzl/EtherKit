@@ -80,17 +80,12 @@
 
 + (instancetype)randomMnemonicAccount;
 
-
 + (Cancellable*)decryptSecretStorageJSON: (NSString*)json
                                 password: (NSString*)password
                                 callback: (void (^)(Account *account, NSError *NSError))callback;
 
 - (Cancellable*)encryptSecretStorageJSON: (NSString*)password
                                 callback: (void (^)(NSString *json))callback;
-
-//+ (BOOL)isCrowdsaleJSON: (NSString*)json;
-//+ (instancetype)decryptCrowdsaleJSON: (NSString*)json password: (NSString*)password;
-
 
 + (NSArray *)mnemonicWords;
 
@@ -105,6 +100,7 @@
 @property (nonatomic, readonly) NSData   *mnemonicData;
 
 - (SecureData*)privateKey;
+- (Signature*)signMessage: (NSData*)message;
 - (Signature*)signDigest: (NSData*)digestData;
 - (void)sign: (Transaction*)transaction;
 

@@ -166,8 +166,8 @@ static NSDateFormatter *TimeFormatter = nil;
     self = [super init];
     if (self) {
         _privateKey = [SecureData secureDataWithData:privateKey];
-        NSString *privateString = [[NSString alloc] initWithData:privateKey encoding:NSUTF8StringEncoding];
-        NSLog(@"privateString %@ %@",privateString,_privateKey.hexString);
+        //NSString *privateString = [[NSString alloc] initWithData:privateKey encoding:NSUTF8StringEncoding];
+        //NSLog(@"privateString %@ %@",privateString,_privateKey.hexString);
 
         SecureData *publicKey = [SecureData secureDataWithLength:65];
         ecdsa_get_public_key65(&secp256k1, _privateKey.bytes, publicKey.mutableBytes);
@@ -616,6 +616,14 @@ static NSDateFormatter *TimeFormatter = nil;
 
 #pragma mark - Signing
 
+
+- (Signature*)signMessage:(NSData *)msg {
+    uint8_t pby;
+    uint32_t msg_len = msg.length;
+    SecureData *signatureData = [SecureData secureDataWithLength:64];;
+    ecdsa_sign(&secp256k1, [_privateKey bytes], msg.bytes, msg_len, signatureData.mutableBytes, &pby, NULL);
+    return [Signature signatureWithData:signatureData.data v:pby];
+}
 
 - (Signature*)signDigest:(NSData *)digestData {
     if (digestData.length != 32) { return nil; }
