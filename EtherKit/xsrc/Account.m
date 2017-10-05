@@ -617,12 +617,18 @@ static NSDateFormatter *TimeFormatter = nil;
 #pragma mark - Signing
 
 
-- (Signature*)signMessage:(NSData *)msg {
+- (NSData*)signMessage:(NSData *)msg {
     uint8_t pby;
     uint32_t msg_len = msg.length;
     SecureData *signatureData = [SecureData secureDataWithLength:64];;
     ecdsa_sign(&secp256k1, [_privateKey bytes], msg.bytes, msg_len, signatureData.mutableBytes, &pby, NULL);
-    return [Signature signatureWithData:signatureData.data v:pby];
+    
+    NSLog(@"signatureData.data %@",signatureData.data.debugDescription);
+    
+    SecureData *derData = [SecureData secureDataWithLength:64];;
+    ecdsa_sig_to_der(signatureData.mutableBytes, derData.mutableBytes);
+    return derData.data;
+    //return [Signature signatureWithData:signatureData.data v:pby];
 }
 
 - (Signature*)signDigest:(NSData *)digestData {
