@@ -100,7 +100,7 @@
 @property (nonatomic, readonly) NSData   *mnemonicData;
 
 - (SecureData*)privateKey;
-- (NSData*)signMessage: (NSData*)message;
+- (NSString*)signMessage: (NSData*)message;
 - (Signature*)signDigest: (NSData*)digestData;
 - (void)sign: (Transaction*)transaction;
 
