@@ -90,8 +90,6 @@
 		0450B2201F68208A002A7D80 /* sha2.h in Headers */ = {isa = PBXBuildFile; fileRef = 0450B1FB1F68208A002A7D80 /* sha2.h */; };
 		0450B2211F68208A002A7D80 /* sha3.c in Sources */ = {isa = PBXBuildFile; fileRef = 0450B1FC1F68208A002A7D80 /* sha3.c */; };
 		0450B2221F68208A002A7D80 /* sha3.h in Headers */ = {isa = PBXBuildFile; fileRef = 0450B1FD1F68208A002A7D80 /* sha3.h */; };
-		0450B2371F683D6E002A7D80 /* xxx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0450B2361F683D6E002A7D80 /* xxx.swift */; };
-		0450B2391F683D9C002A7D80 /* dummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0450B2381F683D9C002A7D80 /* dummy.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -191,8 +189,6 @@
 		0450B1FB1F68208A002A7D80 /* sha2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sha2.h; path = "xThirdParty/trezor-crypto/sha2.h"; sourceTree = "<group>"; };
 		0450B1FC1F68208A002A7D80 /* sha3.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = sha3.c; path = "xThirdParty/trezor-crypto/sha3.c"; sourceTree = "<group>"; };
 		0450B1FD1F68208A002A7D80 /* sha3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sha3.h; path = "xThirdParty/trezor-crypto/sha3.h"; sourceTree = "<group>"; };
-		0450B2361F683D6E002A7D80 /* xxx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = xxx.swift; sourceTree = "<group>"; };
-		0450B2381F683D9C002A7D80 /* dummy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = dummy.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -252,14 +248,12 @@
 				0450B17C1F681F68002A7D80 /* Payment.m */,
 				0450B17D1F681F68002A7D80 /* Signature.h */,
 				0450B17E1F681F68002A7D80 /* Signature.m */,
-				0450B2381F683D9C002A7D80 /* dummy.swift */,
 				0450B17F1F681F68002A7D80 /* Transaction.h */,
 				0450B1801F681F68002A7D80 /* Transaction.m */,
 				0450B1811F681F68002A7D80 /* TransactionInfo.h */,
 				0450B1821F681F68002A7D80 /* TransactionInfo.m */,
 				0450B1831F681F68002A7D80 /* TransactionReceipt.h */,
 				0450B1841F681F68002A7D80 /* TransactionReceipt.m */,
-				0450B2361F683D6E002A7D80 /* xxx.swift */,
 			);
 			name = src;
 			sourceTree = "<group>";
@@ -556,7 +550,6 @@
 				0450B18E1F681F68002A7D80 /* Hash.m in Sources */,
 				0450B18A1F681F68002A7D80 /* ApiProvider.m in Sources */,
 				0450B1A91F681F85002A7D80 /* Promise.m in Sources */,
-				0450B2371F683D6E002A7D80 /* xxx.swift in Sources */,
 				0450B2071F68208A002A7D80 /* bignum.c in Sources */,
 				0450B1AF1F681F85002A7D80 /* SecureData.m in Sources */,
 				0450B18C1F681F68002A7D80 /* BlockInfo.m in Sources */,
@@ -566,7 +559,6 @@
 				0450B1921F681F68002A7D80 /* Signature.m in Sources */,
 				0450B2121F68208A002A7D80 /* hmac.c in Sources */,
 				0450B1A71F681F85002A7D80 /* BigNumber.m in Sources */,
-				0450B2391F683D9C002A7D80 /* dummy.swift in Sources */,
 				0450B1961F681F68002A7D80 /* TransactionInfo.m in Sources */,
 				0450B1FE1F68208A002A7D80 /* aes_modes.c in Sources */,
 				0450B1881F681F68002A7D80 /* Address.m in Sources */,
@@ -655,7 +647,6 @@
 		0450B1681F681BB9002A7D80 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				DEVELOPMENT_TEAM = BH7Z7SE66T;
 				INFOPLIST_FILE = EtherKitTests/Info.plist;
@@ -672,7 +663,6 @@
 		0450B1691F681BB9002A7D80 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				DEVELOPMENT_TEAM = BH7Z7SE66T;
 				INFOPLIST_FILE = EtherKitTests/Info.plist;
