@@ -33,6 +33,7 @@
 #include "curves.h"
 #include "ecdsa.h"
 #include "secp256k1.h"
+#import "RLPSerialization.h"
 
 #import "BigNumber.h"
 
@@ -617,18 +618,35 @@ static NSDateFormatter *TimeFormatter = nil;
 #pragma mark - Signing
 
 
-- (NSString*)signMessage:(NSData *)msg {
+- (NSString*)signMessage2:(NSData *)msg {
     uint8_t pby;
     uint32_t msg_len = msg.length;
-    SecureData *signatureData = [SecureData secureDataWithLength:64];;
+    SecureData *signatureData = [SecureData secureDataWithLength:64];
     ecdsa_sign(&secp256k1, [_privateKey bytes], msg.bytes, msg_len, signatureData.mutableBytes, &pby, NULL);
-    
-    NSLog(@"signatureData.data %@",signatureData.data.debugDescription);
     
     SecureData *derData = [SecureData secureDataWithLength:64];;
     ecdsa_sig_to_der(signatureData.mutableBytes, derData.mutableBytes);
     return derData.hexString;
     //return [Signature signatureWithData:signatureData.data v:pby];
+}
+
+- (NSString*)signMessage:(NSData *)msg {
+    uint8_t pby;
+    uint32_t msg_len = msg.length;
+    SecureData *signatureData = [SecureData secureDataWithLength:64];
+    
+    
+    NSMutableArray *raw = [NSMutableArray arrayWithCapacity:1];
+    [raw addObject:msg];
+    
+    NSError *error = nil;
+    NSData *digest = [SecureData KECCAK256:[RLPSerialization dataWithObject:raw error:&error]];
+    
+    NSData *signature =  [self signDigest:digest];
+    
+    SecureData *derData = [SecureData secureDataWithLength:64];;
+    ecdsa_sig_to_der(signatureData.mutableBytes, derData.mutableBytes);
+    return derData.hexString;
 }
 
 - (Signature*)signDigest:(NSData *)digestData {
