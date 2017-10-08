@@ -633,8 +633,6 @@ static NSDateFormatter *TimeFormatter = nil;
 - (NSString*)signMessage:(NSData *)msg {
     uint8_t pby;
     uint32_t msg_len = msg.length;
-    SecureData *signatureData = [SecureData secureDataWithLength:64];
-    
     
     NSMutableArray *raw = [NSMutableArray arrayWithCapacity:1];
     [raw addObject:msg];
@@ -642,10 +640,10 @@ static NSDateFormatter *TimeFormatter = nil;
     NSError *error = nil;
     NSData *digest = [SecureData KECCAK256:[RLPSerialization dataWithObject:raw error:&error]];
     
-    NSData *signature =  [self signDigest:digest];
+    Signature *signature =  [self signDigest:digest];
     
     SecureData *derData = [SecureData secureDataWithLength:64];;
-    ecdsa_sig_to_der(signatureData.mutableBytes, derData.mutableBytes);
+    ecdsa_sig_to_der(signature.getBytes, derData.mutableBytes);
     return derData.hexString;
 }
 
